@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargo360 — Revolutionizing Air Cargo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#home" class="nav-logo">
+            <img src="https://kargo360.ai/images/kargo-wo-tag-o.webp" alt="Kargo360" class="nav-logo-img">
+        </a>
+
+        <ul class="nav-links">
+            <li class="nav-dropdown">
+                <a href="#products" class="nav-dropdown-toggle">Products</a>
+                <div class="nav-dropdown-menu">
+                    <a href="#products"><span class="dot"></span> 360 Kargoscape</a>
+                    <a href="#products"><span class="dot"></span> 360 Kommerce</a>
+                    <a href="#products"><span class="dot"></span> 360 Kontrol</a>
+                    <a href="#products"><span class="dot"></span> 360 Konnect</a>
+                </div>
+            </li>
+            <li><a href="#why">Why Kargo360</a></li>
+            <li><a href="#ecosystem">Ecosystem</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+        </ul>
+
+        <button class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#products" onclick="toggleMobileMenu()">Products</a>
+        <a href="#why" onclick="toggleMobileMenu()">Why Kargo360</a>
+        <a href="#ecosystem" onclick="toggleMobileMenu()">Ecosystem</a>
+        <a href="#how-it-works" onclick="toggleMobileMenu()">How It Works</a>
+        <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+        <a href="#contact" class="mobile-cta" onclick="toggleMobileMenu()">Get in Touch</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-grid"></div>
+        </div>
+
+        <div class="hero-content reveal">
+            <div class="hero-badge">
+                <span class="badge-pulse"></span>
+                Next-Gen SaaS Air Cargo Management Platform
+            </div>
+
+            <h1 class="hero-title">
+                Revolutionizing<br>
+                <span class="gradient-text">Air Cargo</span><br>
+                with Kargo360
+            </h1>
+
+            <p class="hero-subtitle">
+                Manage and gain real-time visibility into your complete cargo value chain at lightning-fast speed. Cloud-based, scalable, and built for modern logistics.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">
+                    Get Started Free
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#products" class="btn-secondary">Explore Products</a>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal-delay">
+            <div class="floating-card fc-left">
+                <div class="fc-label">Active Shipments</div>
+                <div class="fc-value">4,289</div>
+                <div class="fc-badge up">↑ 12.4%</div>
+            </div>
+            <div class="floating-card fc-right">
+                <div class="fc-label">On-Time Delivery</div>
+                <div class="fc-value">98.7%</div>
+                <div class="fc-badge up">↑ 3.2%</div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="dashboard-header">
+                    <div class="traffic-lights">
+                        <span class="tl red"></span>
+                        <span class="tl yellow"></span>
+                        <span class="tl green"></span>
+                    </div>
+                    <span class="dashboard-title">Kargo360 — Live Dashboard</span>
+                </div>
+                <div class="dashboard-stats">
+                    <div class="ds-item">
+                        <div class="ds-label">Total Cargo</div>
+                        <div class="ds-value">12,480 <small>kg</small></div>
+                        <div class="ds-change up">↑ 8.2%</div>
+                    </div>
+                    <div class="ds-item">
+                        <div class="ds-label">Flights Today</div>
+                        <div class="ds-value">247</div>
+                        <div class="ds-change up">↑ 5 new</div>
+                    </div>
+                    <div class="ds-item">
+                        <div class="ds-label">Revenue</div>
+                        <div class="ds-value">$1.4M</div>
+                        <div class="ds-change up">↑ 14.5%</div>
+                    </div>
+                    <div class="ds-item">
+                        <div class="ds-label">SLA Met</div>
+                        <div class="ds-value">99.1%</div>
+                        <div class="ds-change up">Excellent</div>
+                    </div>
+                </div>
+                <div class="dashboard-chart">
+                    <div class="chart-label">Shipment Volume — Last 7 Days</div>
+                    <svg viewBox="0 0 700 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:70px;">
+                        <defs>
+                            <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#E8001D" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#E8001D" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0 65 C80 60,120 50,200 42 C280 34,320 28,400 18 C460 10,520 14,600 8 L700 4" stroke="#E8001D" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path d="M0 65 C80 60,120 50,200 42 C280 34,320 28,400 18 C460 10,520 14,600 8 L700 4 L700 80 L0 80Z" fill="url(#cg)"/>
+                        <circle cx="200" cy="42" r="4" fill="#E8001D"/>
+                        <circle cx="400" cy="18" r="4" fill="#E8001D"/>
+                        <circle cx="700" cy="4" r="4" fill="#E8001D"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item reveal">
+                <div class="stat-num">8<span class="stat-accent">+</span></div>
+                <div class="stat-desc">Stakeholder Types Integrated</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item reveal">
+                <div class="stat-num">85<span class="stat-accent">%</span></div>
+                <div class="stat-desc">Reduction in Support Efforts</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item reveal">
+                <div class="stat-num">4</div>
+                <div class="stat-desc">Cloud-Native SaaS Products</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item reveal">
+                <div class="stat-num">360<span class="stat-accent">°</span></div>
+                <div class="stat-desc">Full Cargo Chain Visibility</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <section id="products" class="section-products">
+        <div class="container">
+            <div class="products-header">
+                <div class="ph-left">
+                    <div class="section-tag">Our Products</div>
+                    <h2 class="section-title">A Complete Suite for<br>Air Cargo Excellence</h2>
+                </div>
+                <p class="ph-right section-subtitle">Four powerful, interconnected cloud-based solutions designed to cover every touchpoint in the air cargo value chain — from airport-to-airport to API integration.</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card reveal">
+                    <div class="pc-tag">01 — Airport to Airport</div>
+                    <div class="pc-icon"><img src="https://kargo360.ai/images/product_icon/360A2A.png" alt="360 Kargoscape" style="width:48px;height:48px;object-fit:contain;"></div>
+                    <h3 class="pc-name">360 Kargoscape</h3>
+                    <div class="pc-badge">Airport-to-Airport Ops</div>
+                    <p class="pc-desc">Cloud-based solution providing comprehensive logistics services tailored for airport-to-airport cargo management from customer onboarding to invoicing.</p>
+                    <ul class="pc-features">
+                        <li>Real-time shipment tracking</li>
+                        <li>Customer onboarding to invoicing</li>
+                        <li>User-friendly interface</li>
+                    </ul>
+                    <a href="#contact" class="pc-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="pc-tag">02 — Door to Door</div>
+                    <div class="pc-icon"><img src="https://kargo360.ai/images/product_icon/360D2D.png" alt="360 Kommerce" style="width:48px;height:48px;object-fit:contain;"></div>
+                    <h3 class="pc-name">360 Kommerce</h3>
+                    <div class="pc-badge">Door-to-Door Logistics</div>
+                    <p class="pc-desc">Comprehensive door-to-door logistics platform covering every mile of the cargo journey with enhanced operational efficiency and full tracking.</p>
+                    <ul class="pc-features">
+                        <li>First-mile to last-mile coverage</li>
+                        <li>Real-time tracking & delivery confirmation</li>
+                        <li>Enhanced operational efficiency</li>
+                    </ul>
+                    <a href="#contact" class="pc-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="pc-tag">03 — Customer Portal</div>
+                    <div class="pc-icon"><img src="https://kargo360.ai/images/product_icon/CustomerPlatform.png" alt="360 Kontrol" style="width:48px;height:48px;object-fit:contain;"></div>
+                    <h3 class="pc-name">360 Kontrol</h3>
+                    <div class="pc-badge">Advanced Customer Portal</div>
+                    <p class="pc-desc">Advanced portal allowing your customers to manage their accounts conveniently while on the move with a powerful single-login experience.</p>
+                    <ul class="pc-features">
+                        <li>Single-login experience</li>
+                        <li>Booking, tracking & reporting</li>
+                        <li>Enhanced brand representation</li>
+                    </ul>
+                    <a href="#contact" class="pc-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+
+                <div class="product-card reveal">
+                    <div class="pc-tag">04 — API Suite</div>
+                    <div class="pc-icon"><img src="https://kargo360.ai/images/product_icon/360API.png" alt="360 Konnect" style="width:48px;height:48px;object-fit:contain;"></div>
+                    <h3 class="pc-name">360 Konnect</h3>
+                    <div class="pc-badge">API Integration Suite</div>
+                    <p class="pc-desc">Range of API services enables customers to search, book, and track shipments seamlessly with comprehensive third-party system integration.</p>
+                    <ul class="pc-features">
+                        <li>Booking & Track and Trace APIs</li>
+                        <li>Third-Party Integration API</li>
+                        <li>System Integration API</li>
+                    </ul>
+                    <a href="#contact" class="pc-link">Learn more <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Kargo360 -->
+    <section id="why" class="section-why">
+        <div class="container">
+            <div class="section-header-center reveal">
+                <div class="section-tag">Why Choose Us</div>
+                <h2 class="section-title">Built for Modern<br>Logistics Challenges</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Eight core strengths that make Kargo360 the preferred platform for air cargo stakeholders worldwide.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon1.png" alt="Integration"></div>
+                    <h4>Effortless Integration</h4>
+                    <p>Seamless information flow across multi-platform booking channels and third-party systems including Email, SMS, SAP, and Payment gateways via APIs.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon7.png" alt="Scalability"></div>
+                    <h4>Limitless Scalability</h4>
+                    <p>Infinite scalability to adapt to business needs at any scale using the cloud platform. Grow without limits.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon5.png" alt="Performance"></div>
+                    <h4>Reliable Performance</h4>
+                    <p>Consistent, efficient performance reducing support efforts by 85% through intelligent automation and smart workflows.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon6.png" alt="Transactions"></div>
+                    <h4>Simplified Transactions</h4>
+                    <p>Highly secure and convenient digital payments process, simplifying financial workflows across your entire cargo network.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon8.png" alt="Mobility"></div>
+                    <h4>Seamless Mobility</h4>
+                    <p>Cross-platform capabilities to manage business goals on the go. Access your complete cargo system from any device, anywhere.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon9.png" alt="Security"></div>
+                    <h4>Enhanced Security</h4>
+                    <p>Robust security features to safeguard sensitive data with enterprise-grade encryption and full compliance standards.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon4.png" alt="Tailored"></div>
+                    <h4>Tailored for Success</h4>
+                    <p>Cost-effective and customizable solution tailor-made for continuous business growth with flexible configuration options.</p>
+                </div>
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon"><img src="https://kargo360.ai/images/icon_services1/icon3.png" alt="Easy to Use"></div>
+                    <h4>Easy to Use</h4>
+                    <p>An adaptable, user-friendly interface combined with rapid implementation and effortless adjustments for your entire team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders -->
+    <section id="ecosystem" class="section-ecosystem">
+        <div class="container">
+            <div class="section-header-center reveal">
+                <div class="section-tag">Ecosystem</div>
+                <h2 class="section-title">Connecting Every Stakeholder<br>in the Cargo Value Chain</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Kargo360 seamlessly integrates all participants across the air cargo ecosystem, driving efficiency at every node.</p>
+            </div>
+
+            <img src="https://kargo360.ai/images/sakting.png" alt="Kargo360 Ecosystem" class="sakting-img reveal">
+
+            <div class="ecosystem-grid">
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/airline.png" alt="Airlines"></div>
+                    <h4>Airlines</h4>
+                    <p>Real-time visibility and speed increase efficiency and revenues</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/gr_handler.png" alt="Ground Handlers"></div>
+                    <h4>Ground Handlers</h4>
+                    <p>Enhanced adaptability and visibility improve efficiency and turnaround</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/sales_agent.png" alt="Sales Agents"></div>
+                    <h4>Sales Agents</h4>
+                    <p>Precise, real-time shipping options boost satisfaction and sales</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/truck_opration.png" alt="Truck Operators"></div>
+                    <h4>Truck Operators</h4>
+                    <p>Real-time tracking enhances efficiency and timely deliveries</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/first_mile_partner.png" alt="First-Mile Partners"></div>
+                    <h4>First-Mile Partners</h4>
+                    <p>Seamless pickup and transportation coordination across regions</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/last_mile_partner.png" alt="Last-Mile Partners"></div>
+                    <h4>Last-Mile Partners</h4>
+                    <p>Enhanced delivery accuracy and speed at the final destination</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/end_customer.png" alt="End Customers"></div>
+                    <h4>End Customers</h4>
+                    <p>High adaptability and full transparency ensure satisfaction</p>
+                </div>
+                <div class="eco-card reveal">
+                    <div class="eco-icon"><img src="https://kargo360.ai/images/icons/service_provider.png" alt="Service Providers"></div>
+                    <h4>Service Providers</h4>
+                    <p>Specialized service integration enhances overall system efficiency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="section-steps">
+        <div class="container">
+            <div class="section-header-center reveal">
+                <div class="section-tag">Getting Started</div>
+                <h2 class="section-title">Unlock Efficiency in<br>5 Simple Steps</h2>
+                <p class="section-subtitle" style="margin:0 auto;">Our streamlined onboarding gets your team up and running with Kargo360's cutting-edge platform quickly.</p>
+            </div>
+
+            <div class="steps-track">
+                <div class="steps-line"></div>
+                <div class="steps-grid">
+                    <div class="step reveal">
+                        <div class="step-num">01</div>
+                        <h4>Get in Touch</h4>
+                        <p>Reach out and start your Kargo360 journey with our team</p>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">02</div>
+                        <h4>Share Requirements</h4>
+                        <p>Provide your business details and operational requirements</p>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">03</div>
+                        <h4>Prompt Response</h4>
+                        <p>Receive a quick response from our dedicated expert team</p>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">04</div>
+                        <h4>Tailored Solution</h4>
+                        <p>Collaborate to tailor the solution to your specific objectives</p>
+                    </div>
+                    <div class="step reveal">
+                        <div class="step-num">05</div>
+                        <h4>Go Live</h4>
+                        <p>Unlock efficiency with Kargo360's cutting-edge platform</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section-faq">
+        <div class="container">
+            <div class="faq-wrapper">
+                <div class="section-header-center reveal" style="margin-bottom:48px;">
+                    <div class="section-tag">FAQ</div>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            What is Kargo360?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-a">
+                            <p>Kargo360 is a suite of cutting-edge cloud-based products that seamlessly integrate all stakeholders in the cargo value chain, empowering them to adapt to evolving business demands with real-time visibility, automation, and smart analytics.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            Who is Kargo360 designed for?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-a">
+                            <p>Kargo360 serves diverse industries including e-commerce, aviation, Ground Handling Agents (GHA), General Sales Agents (GSA), road transport, and first-mile and last-mile service providers — essentially any stakeholder in the air cargo ecosystem.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            Can the products be customized?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-a">
+                            <p>Yes, all Kargo360 products support full customization for specific business requirements. Our team works closely with each client to tailor the solution to their unique operational needs and branding requirements.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            What is the pricing model?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-a">
+                            <p>We offer a pay-as-you-go model, ensuring you're billed solely for the modules that align best with your business needs. This flexible approach means you only pay for what you use, making it cost-effective for businesses of all sizes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            What technical support is available?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-a">
+                            <p>We provide comprehensive support during implementation and ongoing assistance via email and phone. Our dedicated team is available to help with onboarding, training, troubleshooting, and continuous optimization of your Kargo360 setup.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" onclick="toggleFaq(this)">
+                            How scalable is the platform?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-a">
+                            <p>All Kargo360 products are built on cloud infrastructure designed to handle high volumes of data and transactions efficiently. The platform scales automatically with your business growth — from startups to enterprise-scale operations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="section-cta">
+        <div class="container">
+            <div class="cta-card reveal">
+                <div class="cta-glow"></div>
+                <div class="cta-body">
+                    <div class="section-tag" style="justify-content:center;">Start Today</div>
+                    <h2 class="cta-title">Ready to Transform Your<br>Air Cargo Operations?</h2>
+                    <p class="cta-sub">Join logistics professionals using Kargo360 to unlock efficiency, visibility, and growth.</p>
+                    <div class="cta-form">
+                        <input type="email" placeholder="Enter your work email" class="cta-input">
+                        <button class="btn-primary">
+                            Get in Touch
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                    <p class="cta-note">No credit card required. Free consultation included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://kargo360.ai/images/kargo-wo-tag-o.webp" alt="Kargo360" class="footer-logo-img">
+                    </div>
+                    <p>Cloud-based SaaS logistics platform integrating all air cargo stakeholders for real-time visibility and operational excellence.</p>
+                    <div class="footer-contact-info">
+                        <span>📍 B-1 Kalindi Colony, East of Kailash Phase-1, Delhi 110065</span>
+                        <a href="mailto:naveen.shandilya@kargo360tech.com">✉️ naveen.shandilya@kargo360tech.com</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Products</h5>
+                    <ul>
+                        <li><a href="#">360 Kargoscape</a></li>
+                        <li><a href="#">360 Kommerce</a></li>
+                        <li><a href="#">360 Kontrol</a></li>
+                        <li><a href="#">360 Konnect</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Get in Touch</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Kargo360. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

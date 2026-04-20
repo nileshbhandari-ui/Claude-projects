@@ -1,0 +1,4170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flebo.in — Book Health Checkup & Blood Tests Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<style>
+/* ===== CSS RESET & VARIABLES ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #1B2A5B;
+  --primary-dark: #111D42;
+  --primary-light: #EAEDF5;
+  --primary-gradient: linear-gradient(135deg, #1B2A5B 0%, #2A3F7A 100%);
+  --accent: #D33535;
+  --accent-light: #FBE9EC;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --bg: #DEEBF5;
+  --bg-card: #FFFFFF;
+  --text-primary: #1B2A5B;
+  --text-secondary: #4A5578;
+  --text-muted: #8B90A0;
+  --border: #DDE2EE;
+  --shadow-sm: 0 1px 3px rgba(27,42,91,0.06);
+  --shadow-md: 0 4px 12px rgba(27,42,91,0.08);
+  --shadow-lg: 0 8px 30px rgba(27,42,91,0.12);
+  --shadow-glow: 0 4px 20px rgba(27,42,91,0.25);
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 8px 32px rgba(27, 42, 91, 0.08);
+  --glass-blur: blur(16px);
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 50px;
+  --font-primary: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --nav-height: 68px;
+  --bottom-nav-height: 72px;
+}
+
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  max-width: 393px;
+  margin: 0 auto;
+  padding-bottom: calc(var(--bottom-nav-height) + 16px);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+button { border: none; cursor: pointer; font-family: inherit; }
+img { max-width: 100%; display: block; }
+input, select { font-family: inherit; }
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  z-index: 9999;
+  font-weight: 600;
+  transition: top 0.3s;
+}
+.skip-link:focus { top: 10px; }
+
+/* ===== SKELETON LOADER ===== */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1a1a1a;
+  padding: 8px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 101;
+}
+.top-bar-left,
+.top-bar-center,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.top-bar-left a,
+.top-bar-center a,
+.top-bar-right a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+}
+.top-bar-left i,
+.top-bar-center i,
+.top-bar-right i {
+  font-size: 13px;
+}
+.top-bar-locate {
+  color: var(--accent) !important;
+  font-size: 12px;
+  margin-left: 2px;
+}
+.top-bar-locate i {
+  color: var(--accent);
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky;
+  top: 30px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 12px 16px 0;
+  transition: box-shadow 0.3s, padding 0.3s;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+.header.scrolled {
+  box-shadow: 0 4px 20px rgba(27,42,91,0.08);
+  padding: 8px 16px 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+.upload-report-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 25px;
+  border: 1.5px solid var(--accent);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.upload-report-btn .vault-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.upload-report-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.location-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--primary-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.location-btn:hover { background: #d0f0f0; }
+.location-btn i { font-size: 10px; }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-size: 17px;
+  position: relative;
+  transition: all 0.2s;
+}
+.icon-btn:hover { background: var(--primary-light); color: var(--primary); }
+.icon-btn .badge {
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 18px; height: 18px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+/* ===== HERO SECTION ===== */
+.hero-section {
+  background: url('b-hero4.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  margin: 15px 5px;
+  padding: 0 22px 22px;
+  position: relative;
+  overflow: visible;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+.hero-section-border {
+  display: none;
+}
+.hero-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 14px 0 16px;
+  position: relative;
+  z-index: 1;
+}
+.hero-tab {
+  flex: 1;
+  padding: 9px 6px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+.hero-tab.active {
+  background: #fff;
+  color: var(--primary);
+  border-color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.hero-tab:hover:not(.active) {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+.hero-text {
+  margin-bottom: 10px;
+  padding: 8px 0;
+  position: relative;
+  z-index: 1;
+}
+.hero-text .hero-subtitle {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 6px;
+}
+.hero-text .hero-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+}
+
+/* ===== HERO BENEFIT PILLS ===== */
+.hero-benefits {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.hero-benefit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 5px 10px;
+  transition: background 0.25s;
+}
+.hero-benefit-pill:hover {
+  background: rgba(255, 255, 255, 0.20);
+}
+.hero-benefit-icon {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #fff;
+}
+.hero-benefit-icon.cashback { background: #22C55E; }
+.hero-benefit-icon.reports  { background: #A855F7; }
+.hero-benefit-text {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.hero-search-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-full);
+  padding: 0 16px;
+  height: 48px;
+  border: 1.5px solid rgba(255,255,255,0.6);
+  transition: all 0.3s;
+  position: relative;
+}
+.hero-search-bar:focus-within {
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.hero-search-bar i.search-icon { color: var(--primary); font-size: 16px; margin-right: 5px; }
+.hero-search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+}
+.hero-search-bar input::placeholder { color: var(--text-muted); font-size: 14px; }
+.hero-search-bar .search-mic {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+.hero-search-bar .search-mic:hover { background: var(--primary); color: #fff; }
+
+/* View all Labs button */
+.view-all-labs-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all 0.25s;
+  box-shadow: 0 2px 10px rgba(211,53,53,0.3);
+}
+.view-all-labs-btn:hover {
+  background: #b82e2e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(211,53,53,0.4);
+}
+
+/* Prescription link row */
+.prescription-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  position: relative;
+  z-index: 1;
+}
+.prescription-link {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prescription-link i {
+  margin-right: 4px;
+}
+.prescription-info-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.85);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+.prescription-info-btn:hover { color: #fff; }
+
+/* Prescription popup */
+.prescription-popup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.prescription-popup.active {
+  display: flex;
+}
+.prescription-popup-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.prescription-popup-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+.prescription-popup-close {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 36px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.prescription-popup-close:hover { background: #B52A2A; }
+/* Suggestions are moved to body via JS to escape overflow:hidden */
+#floatingSuggestions {
+  display: none;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 350px;
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  padding: 8px 0;
+  z-index: 99999;
+  max-height: 320px;
+  overflow-y: auto;
+}
+#floatingSuggestions.active { display: block; }
+
+/* ===== DOCTORS PANEL (inside hero) ===== */
+.doctors-panel {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+.doctors-panel.active {
+  display: block;
+}
+.speciality-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.speciality-dropdown {
+  position: relative;
+  flex: 1;
+}
+.speciality-dropdown label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  display: block;
+  margin-bottom: 6px;
+}
+.speciality-dropdown label span { color: #FF6B6B; }
+.speciality-select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.95);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%231B2A5B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: all 0.2s;
+}
+.speciality-select:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+.speciality-submit {
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  background: #D33535;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.speciality-submit:hover {
+  background: #B52A2A;
+  box-shadow: 0 4px 16px rgba(211,53,53,0.3);
+}
+.speciality-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.speciality-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.speciality-item:hover { transform: scale(1.05); }
+.speciality-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.speciality-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.speciality-item span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ===== PACKAGES PANEL (inside hero) ===== */
+.packages-panel {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+.packages-panel.active {
+  display: block;
+}
+.labs-panel {
+  display: none;
+  position: relative;
+  z-index: 1;
+}
+.labs-panel.active {
+  display: block;
+}
+.view-all-labs-row {
+  text-align: left;
+}
+.location-field {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--radius-full);
+  padding: 0 14px;
+  height: 46px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  margin-bottom: 16px;
+  gap: 10px;
+  transition: all 0.2s;
+}
+.location-field:focus-within {
+  border-color: #fff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+.location-field .loc-icon {
+  color: var(--accent);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.location-field input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  font-weight: 500;
+}
+.location-field input::placeholder { color: var(--text-muted); }
+.location-field .locate-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.location-field .locate-btn:hover { background: var(--primary-light); }
+.location-field .locate-btn i { font-size: 18px; }
+.pkg-boxes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.pkg-box {
+  background: rgba(15, 30, 80, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(120, 170, 255, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 8px;
+  box-shadow: 0 0 14px rgba(80, 140, 255, 0.1), 0 0 1px rgba(160, 200, 255, 0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+.pkg-box:hover {
+  background: rgba(20, 40, 100, 0.65);
+  border-color: rgba(150, 200, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(80, 140, 255, 0.2), 0 0 2px rgba(180, 220, 255, 0.7), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.pkg-box-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.pkg-box-icon i {
+  font-size: 20px;
+  color: #fff;
+}
+.pkg-box-icon .icon-accent {
+  font-size: 12px;
+  color: #fff;
+  position: absolute;
+  top: -2px;
+  right: -4px;
+}
+.pkg-box-info h4 {
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+/* ===== DEFAULT HERO CONTENT ===== */
+.hero-default { display: block; }
+.hero-default.hidden { display: none; }
+
+/* ===== SEARCH ===== */
+.search-wrapper {
+  padding: 0 0 12px;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-full);
+  padding: 0 16px;
+  height: 46px;
+  border: 1px solid rgba(255,255,255,0.6);
+  transition: all 0.3s;
+}
+.search-bar:focus-within {
+  border-color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.7);
+  box-shadow: var(--glass-shadow);
+}
+.search-bar i { color: var(--primary); font-size: 16px; margin-right: 10px; }
+.search-bar input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+}
+.search-bar input::placeholder { color: var(--text-muted); }
+.search-bar .search-mic {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.search-bar .search-mic:hover { background: var(--primary); color: #fff; }
+
+/* Search Suggestions Dropdown */
+.search-suggestions {
+  display: none;
+  position: absolute;
+  left: 16px; right: 16px;
+  top: 100%;
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 8px 0;
+  z-index: 50;
+  max-height: 300px;
+  overflow-y: auto;
+}
+.search-suggestions.active { display: block; }
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.suggestion-item:hover { background: var(--primary-light); }
+.suggestion-item i { color: var(--primary); width: 20px; text-align: center; }
+.suggestion-item span { font-size: 13px; color: var(--text-primary); }
+.suggestion-item small { font-size: 11px; color: var(--text-muted); margin-left: auto; }
+.search-relative { position: relative; }
+
+/* ===== MAIN CONTENT ===== */
+main { padding: 0 16px; }
+
+/* ===== PROMO BANNERS ===== */
+.promo-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0 16px;
+  scrollbar-width: none;
+}
+.promo-scroll::-webkit-scrollbar { display: none; }
+.promo-card {
+  min-width: 150px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.promo-card:hover { transform: scale(1.02); }
+.promo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15));
+  pointer-events: none;
+}
+.promo-card .discount {
+  font-family: var(--font-primary);
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.1;
+}
+.promo-card .label {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+.promo-card .emoji { font-size: 28px; position: absolute; bottom: 10px; right: 12px; }
+.promo-1 { background: linear-gradient(135deg, #1B2A5B, #2A3F7A); }
+.promo-2 { background: linear-gradient(135deg, #2A3F7A, #3D56A0); }
+.promo-3 { background: linear-gradient(135deg, #D33535, #C0354D); }
+
+/* ===== FEATURE CARDS ===== */
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  margin-bottom: 12px;
+  box-shadow: var(--glass-shadow);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid #fff;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+.feature-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+}
+.feature-card.prescription::before { background: var(--primary-gradient); }
+.feature-card.home-collection::before { background: linear-gradient(to bottom, #1B8A5A, #16A34A); }
+.feature-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.prescription .feature-icon { background: var(--primary-light); color: var(--primary); }
+.home-collection .feature-icon { background: #ECFDF5; color: #1B8A5A; }
+.feature-info h3 {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.feature-info p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.feature-new {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.feature-arrow {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-left: auto;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  margin-top: 24px;
+}
+.section-header h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+.see-all {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  transition: all 0.2s;
+}
+.see-all:hover { background: var(--accent-light); }
+
+/* ===== CATEGORY TABS ===== */
+.category-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 14px;
+  -webkit-overflow-scrolling: touch;
+}
+.category-tabs::-webkit-scrollbar { display: none; }
+.tab-pill {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border);
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.tab-pill.active, .tab-pill:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ===== DISCOUNT BANNER ===== */
+.discount-banner {
+  background: var(--primary-gradient);
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.discount-banner:hover { transform: scale(1.01); }
+.discount-banner i { font-size: 24px; }
+.discount-banner span {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* ===== PACKAGE CATEGORY TABS ===== */
+.pkg-category-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 0 12px;
+  margin-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.pkg-category-tabs::-webkit-scrollbar { display: none; }
+.pkg-cat-tab {
+  padding: 7px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.25s;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.pkg-cat-tab.active {
+  background: rgba(211,53,53,0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: 0 4px 15px rgba(211,53,53,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+.pkg-cat-tab:hover:not(.active) {
+  background: rgba(255,255,255,0.45);
+  border-color: rgba(211,53,53,0.4);
+  color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* ===== PACKAGE CARDS ===== */
+/* ===== PACKAGES STACKED CAROUSEL ===== */
+.packages-grid {
+  position: relative;
+  height: 340px;
+  perspective: 1000px;
+  overflow: visible;
+  margin: 0 auto 16px;
+  max-width: 320px;
+}
+
+/* ===== NEW PACKAGE CARD DESIGN ===== */
+.package-card {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: rgba(230, 238, 248, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.7);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.package-card.pkg-active {
+  z-index: 3;
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+.package-card.pkg-next {
+  z-index: 2;
+  transform: translateX(18px) translateY(10px) scale(0.94);
+  opacity: 0.7;
+}
+.package-card.pkg-behind {
+  z-index: 1;
+  transform: translateX(36px) translateY(20px) scale(0.88);
+  opacity: 0.4;
+}
+.package-card.pkg-hidden {
+  z-index: 0;
+  transform: translateX(-30px) scale(0.85);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Card top content area */
+.pkg-content {
+  padding: 20px 18px 14px;
+  position: relative;
+  min-height: 200px;
+}
+
+/* Discount badge - top right */
+.pkg-discount-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 10px 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  line-height: 1;
+  box-shadow: 0 3px 12px rgba(211,53,53,0.35);
+  min-height: 50px;
+}
+.pkg-discount-badge .upto {
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  color: rgba(255,255,255,0.9);
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  margin-top: -14px;
+}
+.pkg-discount-badge .pct {
+  font-family: var(--font-primary);
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+.pkg-discount-badge .off {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  align-self: flex-end;
+  margin-bottom: 2px;
+  margin-left: 1px;
+}
+
+/* Package title */
+.pkg-title {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--accent);
+  line-height: 1.2;
+  margin-bottom: 10px;
+  max-width: 65%;
+}
+
+/* Package description */
+.pkg-desc {
+  font-size: 14px;
+  color: #1a1a1a;
+  line-height: 1.45;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+
+/* Test included badge */
+.pkg-test-badge {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: 6px;
+}
+
+/* Card bottom area with red semi-circle and price */
+.pkg-bottom {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+}
+
+/* Red semi-circle */
+.pkg-price-circle {
+  position: absolute;
+  bottom: -60px;
+  left: -30px;
+  width: 180px;
+  height: 180px;
+  background: #304C7C;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+}
+.pkg-price-inner {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+}
+.pkg-price-circle .orig-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.pkg-price-circle .rupee-sym-sm {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-primary);
+  text-decoration: line-through;
+}
+.pkg-price-circle .orig-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  text-decoration: line-through;
+}
+.pkg-price-circle .sale-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+.pkg-price-circle .rupee-sym {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  font-family: var(--font-primary);
+}
+.pkg-price-circle .sale-price {
+  font-family: var(--font-primary);
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+}
+
+/* Book Now button in bottom right */
+.pkg-book-btn {
+  position: absolute;
+  bottom: 26px;
+  right: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 11px 24px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(211,53,53,0.3);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.pkg-book-btn:hover { background: #B52A2A; box-shadow: 0 6px 20px rgba(211,53,53,0.4); }
+.pkg-book-btn:active { transform: scale(0.96); }
+
+/* ===== FOOD INTOLERANCE BANNER ===== */
+.intolerance-banner {
+  background: linear-gradient(135deg, #1A1D26 0%, #2D3142 100%);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  color: #fff;
+  margin: 20px 0;
+  position: relative;
+  overflow: hidden;
+}
+.intolerance-banner::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(10,143,143,0.3), transparent 70%);
+  top: -60px; right: -60px;
+  border-radius: 50%;
+}
+.intolerance-banner h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.intolerance-banner p {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+.intolerance-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.intolerance-price .test-at {
+  font-size: 12px;
+  color: #E8B04A;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.intolerance-price .test-price {
+  font-family: var(--font-primary);
+  font-size: 24px;
+  font-weight: 800;
+  color: #E8B04A;
+}
+.intolerance-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+.banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.banner-cta:hover { box-shadow: 0 4px 20px rgba(211,53,53,0.3); transform: translateY(-1px); }
+
+/* ===== SPECIAL OFFER BANNER ===== */
+.special-offer-banner {
+  border-radius: 20px;
+  margin: 16px 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: block;
+}
+.special-offer-banner:hover { transform: scale(1.01); }
+.special-offer-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+}
+/* ===== CARE PLANS ===== */
+.care-plans-scroll {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.care-plans-scroll::-webkit-scrollbar { display: none; }
+.care-card {
+  min-width: 140px;
+  flex-shrink: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  text-align: center;
+  border: var(--glass-border);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--glass-shadow);
+}
+.care-card:hover { box-shadow: var(--shadow-lg); border-color: rgba(255,255,255,0.8); }
+.care-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.care-card:nth-child(1) .care-icon { background: #FCE7F3; }
+.care-card:nth-child(2) .care-icon { background: #DBEAFE; }
+.care-card:nth-child(3) .care-icon { background: #FEF3C7; }
+.care-card h4 {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+.care-card p { font-size: 11px; color: var(--text-muted); }
+
+/* ===== ORGAN TESTS (removed) ===== */
+/* kept for reference - section removed */
+.organ-card-legacy {
+  min-width: 160px;
+  flex-shrink: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  border: var(--glass-border);
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: var(--glass-shadow);
+}
+.organ-card:hover { box-shadow: var(--shadow-lg); border-color: rgba(255,255,255,0.8); }
+.organ-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.organ-card h4 {
+  font-family: var(--font-primary);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.organ-card .organ-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.organ-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.organ-pricing .op-new { font-weight: 700; font-size: 15px; color: var(--text-primary); }
+.organ-pricing .op-old { font-size: 11px; color: var(--text-muted); text-decoration: line-through; }
+.organ-card .book-sm {
+  margin-top: 8px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+.organ-card .book-sm:hover { background: var(--primary); color: #fff; }
+
+/* ===== RADIOLOGY ===== */
+.radiology-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.radiology-scroll {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.radiology-scroll::-webkit-scrollbar { display: none; }
+.radio-card {
+  min-width: calc((100% - 14px) / 2);
+  max-width: calc((100% - 14px) / 2);
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+.radio-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.radio-img-wrap {
+  width: 100%;
+  height: 126px;
+  position: relative;
+  overflow: hidden;
+  background: #E8EEF4;
+}
+.radio-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.radio-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+.radio-card:nth-child(1) .radio-badge { background: #0A8F8F; }
+.radio-card:nth-child(2) .radio-badge { background: #1B2A5B; }
+.radio-card:nth-child(3) .radio-badge { background: var(--accent); }
+.radio-card:nth-child(4) .radio-badge { background: #7C3AED; }
+.radio-info {
+  padding: 16px 18px 18px;
+}
+.radio-info h4 {
+  font-family: var(--font-primary);
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.radio-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.radio-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.radio-price-block .radio-price-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+.radio-price-block .radio-price-value {
+  font-family: var(--font-primary);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.radio-book-btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.25s;
+  white-space: nowrap;
+}
+.radio-book-btn:hover {
+  background: #B52A2A;
+  box-shadow: 0 4px 16px rgba(211,53,53,0.3);
+}
+
+/* ===== HEALTH CONCERNS ===== */
+.health-concerns-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.concerns-bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.concern-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.concern-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.concern-card.card-large {
+  grid-row: span 2;
+}
+.concern-card .cc-bg {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+.concern-card.card-large .cc-bg {
+  min-height: 330px;
+}
+.concern-card .cc-pill {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== LIFESTYLE CONCERNS ===== */
+.lifestyle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.lifestyle-chip {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  aspect-ratio: 1 / 1.05;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+.lifestyle-chip:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.lifestyle-chip .lc-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.lifestyle-chip .lc-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 60%);
+  z-index: 1;
+}
+.lifestyle-chip .lc-label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+
+/* ===== TESTS BY CATEGORY ===== */
+.tests-category-section {
+  margin: 24px 0;
+}
+.tests-category-section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+.tests-category-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 4px 0 12px;
+  -webkit-overflow-scrolling: touch;
+}
+.tests-category-scroll::-webkit-scrollbar { display: none; }
+.test-cat-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition: transform 0.3s;
+}
+.test-cat-item:hover { transform: translateY(-3px); }
+/* Gradient ring around circle */
+
+
+.test-cat-circle .cat-icon {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-color: #f0e8e0;
+}
+.test-cat-label {
+  font-family: var(--font-primary);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ===== TRUST SECTION ===== */
+.trust-section {
+  background: #304C7C;
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  margin: 20px 0;
+  text-align: center;
+  border: none;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+.trust-section h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.trust-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+}
+.trust-stat { text-align: center; }
+.trust-stat .stat-num {
+  font-family: var(--font-primary);
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+}
+.trust-stat .stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+}
+
+/* ===== MEDIA COVERAGE SECTION ===== */
+.media-coverage-section {
+  margin: 24px 0;
+}
+.media-coverage-section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+
+/* Stacked Media Player */
+.media-player-stack {
+  position: relative;
+  width: 88%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+/* Background stacked cards */
+.media-player-stack::before,
+.media-player-stack::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 92%;
+  height: 100%;
+  border-radius: 20px;
+  background: #224d7c42;
+  z-index: 0;
+}
+.media-player-stack::before {
+  transform: translateX(-50%) rotate(-2deg);
+  opacity: 0.5;
+  top: 6px;
+  width: 88%;
+}
+.media-player-stack::after {
+  transform: translateX(-50%) rotate(1.5deg);
+  opacity: 0.7;
+  top: 8px;
+  width: 90%;
+}
+/* Main card */
+.media-player-card {
+  position: relative;
+  z-index: 2;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #c8c2b8;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+/* Close button */
+.media-player-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  background: rgba(180, 90, 90, 0.85);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.2s;
+}
+.media-player-close:hover {
+  background: rgba(200, 60, 60, 1);
+}
+/* Thumbnail area */
+.media-player-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 18/10;
+  overflow: hidden;
+}
+.media-player-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Progress bar */
+.media-player-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  position: relative;
+}
+.media-player-progress-bar {
+  height: 100%;
+  width: 55%;
+  background: #fff;
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+/* Controls bar */
+.media-player-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: #304C7C;
+  backdrop-filter: blur(8px);
+}
+.media-player-controls button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+  font-size: 18px;
+}
+.media-player-controls button:hover {
+  opacity: 0.7;
+}
+.media-player-controls .ctrl-main {
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  font-size: 18px;
+  margin: 0 4px;
+}
+.media-player-controls .ctrl-spacer {
+  flex: 1;
+}
+/* Hidden swiper for data only */
+.media-swiper {
+  display: none;
+}
+
+/* Video Popup Overlay */
+.video-popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+.video-popup-overlay.show {
+  display: flex;
+  animation: fadeInPopup 0.3s ease;
+}
+@keyframes fadeInPopup {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.video-popup-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  overflow: visible;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: scaleInPopup 0.3s ease;
+}
+@keyframes scaleInPopup {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.video-popup-player {
+  position: relative;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16/9;
+}
+.video-popup-player img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-popup-player video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-popup-play-btn {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  background: rgba(212, 32, 32, 0.9);
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+.video-popup-play-btn svg {
+  width: 22px; height: 22px;
+  fill: #fff;
+  margin-left: 3px;
+}
+.video-popup-play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: rgba(212, 32, 32, 1);
+}
+.video-popup-play-btn.hidden { display: none; }
+.video-popup-info {
+  padding: 16px 20px;
+  background: linear-gradient(145deg, #0a1a3a, #162855);
+  color: #fff;
+  border-radius: 0 0 16px 16px;
+}
+.video-popup-info h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+.video-popup-info p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.video-popup-close {
+  position: absolute;
+  top: -12px; right: -12px;
+  width: 32px; height: 32px;
+  background: #D42020;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.video-popup-close:hover {
+  transform: scale(1.1);
+}
+
+/* ===== TESTIMONIALS SECTION ===== */
+.testimonials-section {
+  margin: 40px 0;
+}
+.testimonials-section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+}
+
+.testimonial-carousel {
+  position: relative;
+  min-height: 340px;
+  overflow: hidden;
+}
+.testimonial-card {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(100%);
+}
+.testimonial-card.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.testimonial-card.exit {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.testimonial-quote-icon {
+  font-size: 32px;
+  color: rgba(27,42,91,0.2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.testimonial-body {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.testimonial-avatar {
+  flex: 0 0 70px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  overflow: hidden;
+  background: linear-gradient(135deg, #ddd, #eee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.testimonial-text {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+.testimonial-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.testimonial-name {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.testimonial-stars {
+  color: #FFD700;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.testimonial-close-quote {
+  font-size: 28px;
+  color: rgba(27,42,91,0.15);
+  text-align: right;
+  line-height: 1;
+  margin-top: -4px;
+}
+
+/* Carousel nav buttons */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+  align-items: center;
+}
+.carousel-nav-btn {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(27,42,91,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s;
+  border: 1px solid rgba(27,42,91,0.1);
+}
+.carousel-nav-btn:hover { background: rgba(27,42,91,0.15); }
+.carousel-nav-btn.play-pause {
+  width: 42px; height: 42px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 16px;
+  border: none;
+}
+.carousel-nav-btn.play-pause:hover { background: #2A3F7A; }
+
+/* ===== FLOATING CALL BUTTON ===== */
+.float-call {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-height) + 20px);
+  right: 16px;
+  z-index: 90;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: var(--shadow-glow);
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: float-pulse 2s infinite;
+}
+.float-call:hover { transform: scale(1.05); }
+@keyframes float-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(211,53,53,0.3); }
+  50% { box-shadow: 0 4px 30px rgba(211,53,53,0.5); }
+}
+.float-call i { font-size: 16px; }
+
+/* ===== HAMBURGER MENU BUTTON ===== */
+.hamburger-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.hamburger-btn:hover { background: var(--primary-light); color: var(--primary); }
+
+/* ===== SIDEBAR MENU ===== */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.sidebar-overlay.active { display: block; opacity: 1; }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  max-width: 80vw;
+  background: #fff;
+  z-index: 1000;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 8px 0 30px rgba(0,0,0,0.15);
+}
+.sidebar.active { left: 0; }
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 20px 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+.sidebar-user-info {
+  flex: 1;
+}
+.sidebar-user-info .user-name {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.sidebar-user-info .user-location {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.sidebar-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 16px;
+}
+.sidebar-close:hover { background: var(--primary-light); color: var(--accent); }
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+}
+.sidebar-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+.sidebar-link.active-link {
+  border-left-color: var(--accent);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.sidebar-link i {
+  width: 22px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.sidebar-link:hover i { color: var(--primary); }
+.sidebar-link.active-link i { color: var(--accent); }
+.sidebar-link .new-badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  margin-left: 4px;
+}
+.sidebar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 20px;
+}
+.sidebar-footer {
+  padding: 16px 20px 24px;
+  border-top: 1px solid var(--border);
+}
+.sidebar-social {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+.social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1.5px solid var(--border);
+  color: var(--text-secondary);
+  background: transparent;
+}
+.social-icon:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 8px);
+  max-width: 385px;
+  height: var(--bottom-nav-height);
+  background: #D33535;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 100;
+  padding: 0 8px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -4px 20px rgba(211,53,53,0.3);
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+  background: transparent;
+  min-width: 56px;
+}
+.nav-item.active {
+  color: #fff;
+}
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  border-radius: 0 0 3px 3px;
+}
+.nav-item:hover { color: #fff; background: rgba(255,255,255,0.15); }
+.nav-item i { font-size: 22px; }
+.nav-label { font-size: 10px; font-weight: 600; }
+
+/* Center Chat icon - elevated */
+.nav-item.nav-chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: transparent;
+  padding: 4px 12px 8px;
+  min-width: 56px;
+  position: relative;
+  top: -14px;
+  margin-bottom: -10px;
+}
+.nav-item.nav-chat img {
+  width: 46px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.nav-item.nav-chat .nav-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  padding-top: 3px;
+}
+.nav-item.nav-chat:hover .nav-label,
+.nav-item.nav-chat.active .nav-label {
+  color: #fff;
+}
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: var(--accent);
+  padding: 32px 20px 100px;
+  margin-top: 24px;
+  color: #fff;
+}
+.footer-logo {
+  height: 44px;
+  width: auto;
+  margin-bottom: 16px;
+  filter: brightness(0) invert(1);
+}
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 24px;
+}
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.footer-contact-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.footer-contact-label {
+  font-size: 15px;
+  font-weight: 700;
+}
+.footer-contact-value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  margin-top: 2px;
+}
+.footer-contact-value a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  margin: 24px 0;
+}
+.footer-links-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+}
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+.footer-link::before {
+  content: '—';
+  color: rgba(255,255,255,0.6);
+  font-weight: 700;
+}
+
+/* ===== PARTNER LABS SECTION ===== */
+.partner-labs-section {
+  text-align: center;
+  padding: 5px;
+  margin-top: 0px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  border: 2px solid #fff;
+}
+.partner-labs-section h2 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+.partner-labs-section .partner-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+.partner-labs-track {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 0px 0px;
+}
+.partner-labs-scroll {
+  display: flex;
+  gap: 3px;
+  animation: partnerScroll 15s linear infinite;
+  width: max-content;
+  background-color: #fff;
+}
+.partner-labs-scroll:hover {
+  animation-play-state: paused;
+}
+.partner-lab-logo {
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+  background: #fff;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.partner-lab-logo:hover {
+  opacity: 1;
+}
+@keyframes partnerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== TOAST NOTIFICATION ===== */
+.toast {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-height) + 16px);
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--text-primary);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+/* ===== MODAL (for Know More) ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 500;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.active { display: flex; }
+.modal-sheet {
+  background: var(--bg-card);
+  width: 100%;
+  max-width: 385px;
+  max-height: 80vh;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: 20px;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.modal-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+.modal-sheet h3 {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.modal-sheet .test-list {
+  list-style: none;
+  padding: 0;
+}
+.modal-sheet .test-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.modal-sheet .test-list li i { color: var(--primary); font-size: 10px; }
+.modal-close {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  margin-top: 16px;
+  transition: all 0.2s;
+}
+.modal-close:hover { background: var(--primary-dark); }
+
+/* ===== MICRO ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* ===== SCROLLBAR HIDE UTIL ===== */
+.hide-scroll { scrollbar-width: none; }
+.hide-scroll::-webkit-scrollbar { display: none; }
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Skip navigation for accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== HEADER ===== -->
+<!-- Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <i class="fas fa-location-dot"></i>
+    <span>Gurgaon, 122001</span>
+    <a href="#" aria-label="Change location" class="top-bar-locate"><i class="fas fa-crosshairs"></i></a>
+  </div>
+  <div class="top-bar-center">
+    <i class="fas fa-phone"></i>
+    <a href="tel:01244550000">012 44 55 0000</a>
+  </div>
+  <div class="top-bar-right">
+    <a href="#" aria-label="Login or Signup"><i class="fas fa-user"></i> Login/Signup</a>
+  </div>
+</div>
+
+<header class="header" role="banner">
+  <div class="header-top">
+    <div class="logo-area">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <img src="flebo-logo.svg" alt="Flebo home" class="logo-img">
+    </div>
+    <button class="upload-report-btn" aria-label="Upload Report of any lab">
+      <img src="vault3.png" alt="Vault" class="vault-icon">
+      Upload Report of any lab
+    </button>
+  </div>
+
+</header>
+
+<!-- ===== SIDEBAR MENU ===== -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<nav class="sidebar" id="sidebar" role="navigation" aria-label="Side menu">
+  <div class="sidebar-header">
+    <div class="sidebar-avatar"><i class="fas fa-user-tie"></i></div>
+    <div class="sidebar-user-info">
+      <div class="user-name">Nilesh</div>
+      <div class="user-location">Gurgaon, 122001</div>
+    </div>
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+  </div>
+  <div class="sidebar-nav">
+    <a class="sidebar-link active-link" href="#" data-menu="home"><i class="fas fa-house"></i> Home</a>
+    <a class="sidebar-link" href="#" data-menu="upload"><i class="fas fa-file-arrow-up"></i> Upload Report (Of Any Lab) <span class="new-badge">New</span></a>
+    <a class="sidebar-link" href="#" data-menu="bmi"><i class="fas fa-calculator"></i> BMI Calculator</a>
+    <div class="sidebar-divider"></div>
+    <a class="sidebar-link" href="#" data-menu="tests"><i class="fas fa-flask-vial"></i> Tests</a>
+    <a class="sidebar-link" href="#" data-menu="packages"><i class="fas fa-box-open"></i> Packages</a>
+    <a class="sidebar-link" href="#" data-menu="trends"><i class="fas fa-chart-line"></i> Health Trend Graph</a>
+    <a class="sidebar-link" href="#" data-menu="referral"><i class="fas fa-gift"></i> Referral & Earning</a>
+    <div class="sidebar-divider"></div>
+    <a class="sidebar-link" href="#" data-menu="why"><i class="fas fa-circle-info"></i> Why Flebo.in</a>
+    <a class="sidebar-link" href="#" data-menu="blog"><i class="fas fa-newspaper"></i> Blog</a>
+    <a class="sidebar-link" href="#" data-menu="press"><i class="fas fa-bullhorn"></i> Press Coverages</a>
+    <a class="sidebar-link" href="#" data-menu="contact"><i class="fas fa-envelope"></i> Contact Us</a>
+    <div class="sidebar-divider"></div>
+    <a class="sidebar-link" href="#" data-menu="login"><i class="fas fa-right-to-bracket"></i> Login/Signup</a>
+  </div>
+  <div class="sidebar-footer">
+    <div class="sidebar-social">
+      <button class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></button>
+      <button class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></button>
+      <button class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></button>
+      <button class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+      <button class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO SECTION ===== -->
+<div class="hero-section" aria-label="Book tests hero">
+  <div class="hero-section-border"></div>
+  <div class="hero-tabs" role="tablist" aria-label="Service type">
+    <button class="hero-tab active" role="tab" aria-selected="true" data-hero="tests">Tests</button>
+    <button class="hero-tab" role="tab" aria-selected="false" data-hero="packages">Packages</button>
+    <button class="hero-tab" role="tab" aria-selected="false" data-hero="labs">Labs</button>
+    <button class="hero-tab" role="tab" aria-selected="false" data-hero="doctors">Doctors</button>
+  </div>
+  <!-- Default hero content (Tests/Packages/Labs) -->
+  <div class="hero-default" id="heroDefault">
+    <div class="hero-text">
+      <div class="hero-title" id="heroTitle">Book tests after comparing prices, ratings and distance of various labs</div>
+    </div>
+    <div class="hero-benefits">
+      <div class="hero-benefit-pill">
+        <span class="hero-benefit-icon cashback"><i class="fas fa-percent" aria-hidden="true"></i></span>
+        <span class="hero-benefit-text">50% Cashback + 20% Discount</span>
+      </div>
+      <div class="hero-benefit-pill">
+        <span class="hero-benefit-icon reports"><i class="fas fa-brain" aria-hidden="true"></i></span>
+        <span class="hero-benefit-text">AI-Powered Report Analysis</span>
+      </div>
+    </div>
+    <div class="hero-search-bar" role="search" style="position:relative;">
+      <i class="fas fa-search search-icon" aria-hidden="true"></i>
+      <label for="mainSearch" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Search for tests, packages, or labs</label>
+      <input type="search" id="mainSearch" placeholder="Book a Pathology or Radiology Tests" autocomplete="off">
+      <button class="search-mic" aria-label="Voice search">
+        <i class="fas fa-microphone"></i>
+      </button>
+    </div>
+    <div class="prescription-link-row">
+      <a href="#" class="prescription-link"><i class="fas fa-prescription"></i> Click Here to Book Via Doctor Prescription</a>
+      <button class="prescription-info-btn" id="prescriptionInfoBtn" aria-label="More info about booking via prescription">
+        <i class="fas fa-circle-question"></i>
+      </button>
+    </div>
+    <div class="prescription-popup" id="prescriptionPopup">
+      <div class="prescription-popup-content">
+        <p>Our customer care executives will call to help you book the prescribed tests from your preferred lab.</p>
+        <button class="prescription-popup-close" id="prescriptionPopupClose" aria-label="Close">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages panel -->
+  <div class="packages-panel" id="packagesPanel">
+    <div class="hero-text">
+      <div class="hero-subtitle">Compare & Choose the Best</div>
+      <div class="hero-title" style="font-size:24px;">Health Checkup Packages</div>
+    </div>
+    <div class="hero-search-bar" role="search" style="margin-bottom:10px;">
+      <i class="fas fa-search search-icon" aria-hidden="true"></i>
+      <input type="search" placeholder="Book a Package" aria-label="Book a Package" autocomplete="off">
+      <button class="search-mic" aria-label="Voice search">
+        <i class="fas fa-microphone"></i>
+      </button>
+    </div>
+    <div class="pkg-boxes-grid">
+      <div class="pkg-box" tabindex="0" aria-label="Based on Age, Gender, Habits and BMI">
+        <div class="pkg-box-icon">
+          <i class="fas fa-comments" aria-hidden="true"></i>
+          <i class="fas fa-circle-question icon-accent" aria-hidden="true"></i>
+        </div>
+        <div class="pkg-box-info">
+          <h4>Based On Age, Gender, Habits & BMI</h4>
+        </div>
+      </div>
+      <div class="pkg-box" tabindex="0" aria-label="Based on Tests Required">
+        <div class="pkg-box-icon">
+          <i class="fas fa-microscope" aria-hidden="true"></i>
+        </div>
+        <div class="pkg-box-info">
+          <h4>Based On Tests Required</h4>
+        </div>
+      </div>
+      <div class="pkg-box" tabindex="0" aria-label="From a Particular Lab">
+        <div class="pkg-box-icon">
+          <i class="fas fa-flask-vial" aria-hidden="true"></i>
+        </div>
+        <div class="pkg-box-info">
+          <h4>From A Particular Lab</h4>
+        </div>
+      </div>
+      <div class="pkg-box" tabindex="0" aria-label="Popular Packages">
+        <div class="pkg-box-icon">
+          <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+        </div>
+        <div class="pkg-box-info">
+          <h4>Popular Packages</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Labs panel -->
+  <div class="labs-panel" id="labsPanel">
+    <div class="hero-text">
+      <div class="hero-title" style="font-size:24px;">Choose Your Lab</div>
+    </div>
+    <div class="hero-search-bar" role="search" style="margin-bottom:12px;">
+      <i class="fas fa-search search-icon" aria-hidden="true"></i>
+      <input type="search" placeholder="Search for a particular lab" aria-label="Search for a particular lab" autocomplete="off">
+      <button class="search-mic" aria-label="Voice search">
+        <i class="fas fa-microphone"></i>
+      </button>
+    </div>
+    <div class="view-all-labs-row">
+      <a href="#" class="view-all-labs-btn">View all Labs at Your Location</a>
+    </div>
+  </div>
+
+  <!-- Doctors panel -->
+  <div class="doctors-panel" id="doctorsPanel">
+    <div class="hero-text">
+      <div class="hero-subtitle">Consult Top Doctors</div>
+      <div class="hero-title" style="font-size:24px;">Book a Tele Consultation</div>
+    </div>
+    <div class="speciality-row">
+      <div class="speciality-dropdown">
+        <label for="specialitySelect">Speciality<span>*</span></label>
+        <select id="specialitySelect" class="speciality-select">
+          <option value="">Search for a speciality</option>
+          <option value="general">General Physician</option>
+          <option value="ayurveda">Ayurveda</option>
+          <option value="cardiology">Cardiology</option>
+          <option value="dentistry">Dentistry</option>
+          <option value="dermatology">Dermatology</option>
+          <option value="diabetology">Diabetology</option>
+          <option value="endocrinology">Endocrinology</option>
+          <option value="ent">ENT</option>
+          <option value="gastroenterology">Gastroenterology</option>
+        </select>
+      </div>
+      <button class="speciality-submit" id="specialitySubmit">Submit</button>
+    </div>
+    <div class="speciality-grid">
+      <div class="speciality-item" data-spec="general">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=160&h=160&fit=crop" alt="General Physician"></div>
+        <span>General Physician</span>
+      </div>
+      <div class="speciality-item" data-spec="ayurveda">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=160&h=160&fit=crop" alt="Ayurveda"></div>
+        <span>Ayurveda</span>
+      </div>
+      <div class="speciality-item" data-spec="cardiology">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1628348070889-cb656235b4eb?w=160&h=160&fit=crop" alt="Cardiology"></div>
+        <span>Cardiology</span>
+      </div>
+      <div class="speciality-item" data-spec="dentistry">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=160&h=160&fit=crop" alt="Dentistry"></div>
+        <span>Dentistry</span>
+      </div>
+      <div class="speciality-item" data-spec="dermatology">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=160&h=160&fit=crop" alt="Dermatology"></div>
+        <span>Dermatology</span>
+      </div>
+      <div class="speciality-item" data-spec="diabetology">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?w=160&h=160&fit=crop" alt="Diabetology"></div>
+        <span>Diabetology</span>
+      </div>
+      <div class="speciality-item" data-spec="endocrinology">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=160&h=160&fit=crop" alt="Endocrinology"></div>
+        <span>Endocrinology</span>
+      </div>
+      <div class="speciality-item" data-spec="ent">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=160&h=160&fit=crop" alt="ENT"></div>
+        <span>ENT</span>
+      </div>
+      <div class="speciality-item" data-spec="gastroenterology">
+        <div class="speciality-img"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=160&h=160&fit=crop" alt="Gastroenterology"></div>
+        <span>Gastroenterology</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating search suggestions (outside hero to avoid overflow clip) -->
+<div id="floatingSuggestions" role="listbox" aria-label="Search suggestions">
+  <div class="suggestion-item" role="option"><i class="fas fa-fire"></i><span>CBC (Complete Blood Count)</span><small>Popular</small></div>
+  <div class="suggestion-item" role="option"><i class="fas fa-fire"></i><span>Thyroid Profile</span><small>Popular</small></div>
+  <div class="suggestion-item" role="option"><i class="fas fa-vial"></i><span>Lipid Profile</span><small>Heart</small></div>
+  <div class="suggestion-item" role="option"><i class="fas fa-vial"></i><span>HbA1c (Diabetes)</span><small>Diabetes</small></div>
+  <div class="suggestion-item" role="option"><i class="fas fa-vial"></i><span>Vitamin D Test</span><small>Vitamins</small></div>
+  <div class="suggestion-item" role="option"><i class="fas fa-box"></i><span>Full Body Checkup</span><small>Package</small></div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main id="main-content" role="main">
+
+
+  <!-- Partner Labs -->
+  <section class="partner-labs-section" aria-label="Partner Labs">
+    <h2>A Few Of #OurBloodRelations</h2>
+    <p class="partner-subtitle">160+ Partner Labs</p>
+    <div class="partner-labs-track">
+      <div class="partner-labs-scroll">
+        <img src="lab-logos/agilus-diagnostics.webp" alt="Agilus Diagnostics" class="partner-lab-logo">
+        <img src="lab-logos/ampath.webp" alt="Ampath" class="partner-lab-logo">
+        <img src="lab-logos/apollo-health.webp" alt="Apollo Health and Lifestyle" class="partner-lab-logo">
+        <img src="lab-logos/augmentum-diagnostics.webp" alt="Augmentum Diagnostics" class="partner-lab-logo">
+        <img src="lab-logos/healthians.webp" alt="Healthians Lab" class="partner-lab-logo">
+        <img src="lab-logos/janta-xray.webp" alt="Janta X-ray Clinic" class="partner-lab-logo">
+        <img src="lab-logos/max-lab.webp" alt="Max Lab by Max Hospital" class="partner-lab-logo">
+        <img src="lab-logos/molecular-quest.webp" alt="Molecular Quest Healthcare" class="partner-lab-logo">
+        <img src="lab-logos/pathkind.webp" alt="Pathkind Lab" class="partner-lab-logo">
+        <img src="lab-logos/tata-1mg.webp" alt="Tata 1mg" class="partner-lab-logo">
+        <img src="lab-logos/thyrocare.webp" alt="Thyrocare" class="partner-lab-logo">
+        <!-- Duplicate for seamless loop -->
+        <img src="lab-logos/agilus-diagnostics.webp" alt="Agilus Diagnostics" class="partner-lab-logo">
+        <img src="lab-logos/ampath.webp" alt="Ampath" class="partner-lab-logo">
+        <img src="lab-logos/apollo-health.webp" alt="Apollo Health and Lifestyle" class="partner-lab-logo">
+        <img src="lab-logos/augmentum-diagnostics.webp" alt="Augmentum Diagnostics" class="partner-lab-logo">
+        <img src="lab-logos/healthians.webp" alt="Healthians Lab" class="partner-lab-logo">
+        <img src="lab-logos/janta-xray.webp" alt="Janta X-ray Clinic" class="partner-lab-logo">
+        <img src="lab-logos/max-lab.webp" alt="Max Lab by Max Hospital" class="partner-lab-logo">
+        <img src="lab-logos/molecular-quest.webp" alt="Molecular Quest Healthcare" class="partner-lab-logo">
+        <img src="lab-logos/pathkind.webp" alt="Pathkind Lab" class="partner-lab-logo">
+        <img src="lab-logos/tata-1mg.webp" alt="Tata 1mg" class="partner-lab-logo">
+        <img src="lab-logos/thyrocare.webp" alt="Thyrocare" class="partner-lab-logo">
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards -->
+  <section aria-label="Quick services" style="margin-top:10px;">
+    <div class="feature-card prescription" tabindex="0" role="link" aria-label="Book via Doctor Prescription">
+      <span class="feature-new">New</span>
+      <div class="feature-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+      <div class="feature-info">
+        <h3>Upload reports to track your health progress over time with our Health Trend Graph</h3>
+      </div>
+      <i class="fas fa-chevron-right feature-arrow" aria-hidden="true"></i>
+    </div>
+  </section>
+
+  <!-- Popular Packages -->
+  <section aria-label="Popular packages">
+    <div class="section-header">
+      <h2>Popular Packages</h2>
+      <button class="see-all" aria-label="See all packages">See all <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+
+    <div class="pkg-category-tabs" id="pkgCategoryTabs">
+      <button class="pkg-cat-tab active" data-cat="all">All</button>
+      <button class="pkg-cat-tab" data-cat="women">Women</button>
+      <button class="pkg-cat-tab" data-cat="men">Men</button>
+      <button class="pkg-cat-tab" data-cat="elderly">Elderly</button>
+      <button class="pkg-cat-tab" data-cat="kids">Kids</button>
+      <button class="pkg-cat-tab" data-cat="couple">Couple</button>
+      <button class="pkg-cat-tab" data-cat="corporate">Corporate</button>
+    </div>
+
+    <!-- Stacked Carousel Cards -->
+    <div class="packages-grid" id="packagesGrid">
+
+      <!-- 1. Advanced Health Package -->
+      <article class="package-card pkg-active" data-pkg-index="0" aria-label="Advanced Health Package">
+        <div class="pkg-content">
+          <div class="pkg-discount-badge">
+            <span class="upto">UPTO</span>
+            <span class="pct">55%</span>
+            <span class="off">OFF</span>
+          </div>
+          <h3 class="pkg-title">Advanced Health Package</h3>
+          <p class="pkg-desc">Go beyond basic health checks, unlock insights into your metabolic health &amp; nutritional well-being with this package.</p>
+          <span class="pkg-test-badge">Test Included: 58</span>
+        </div>
+        <div class="pkg-bottom">
+          <div class="pkg-price-circle">
+            <div class="pkg-price-inner">
+              <div class="orig-price-row"><span class="rupee-sym-sm">₹</span><span class="orig-price">2000</span></div>
+              <div class="sale-price-row"><span class="rupee-sym">₹</span><span class="sale-price">900</span></div>
+            </div>
+          </div>
+          <button class="pkg-book-btn" aria-label="Book Advanced Health Package for 900 rupees">Book Now</button>
+        </div>
+      </article>
+
+      <!-- 2. Couple's Health Package -->
+      <article class="package-card pkg-next" data-pkg-index="1" aria-label="Couple's Health Package">
+        <div class="pkg-content">
+          <div class="pkg-discount-badge">
+            <span class="upto">UPTO</span>
+            <span class="pct">67%</span>
+            <span class="off">OFF</span>
+          </div>
+          <h3 class="pkg-title">Couple's Health Package</h3>
+          <p class="pkg-desc">For couples, this package includes screenings for HIV, heart risk, reproductive health, infections, and more.</p>
+          <span class="pkg-test-badge">Test Included: 86</span>
+        </div>
+        <div class="pkg-bottom">
+          <div class="pkg-price-circle">
+            <div class="pkg-price-inner">
+              <div class="orig-price-row"><span class="rupee-sym-sm">₹</span><span class="orig-price">4550</span></div>
+              <div class="sale-price-row"><span class="rupee-sym">₹</span><span class="sale-price">1499</span></div>
+            </div>
+          </div>
+          <button class="pkg-book-btn" aria-label="Book Couple's Health Package for 1499 rupees">Book Now</button>
+        </div>
+      </article>
+
+      <!-- 3. Basic Health Package -->
+      <article class="package-card pkg-behind" data-pkg-index="2" aria-label="Basic Health Package">
+        <div class="pkg-content">
+          <div class="pkg-discount-badge">
+            <span class="upto">UPTO</span>
+            <span class="pct">78%</span>
+            <span class="off">OFF</span>
+          </div>
+          <h3 class="pkg-title">Basic Health Package</h3>
+          <p class="pkg-desc">From blood count to liver &amp; kidney function, this package offers a thorough health overview.</p>
+          <span class="pkg-test-badge">Test Included: 49</span>
+        </div>
+        <div class="pkg-bottom">
+          <div class="pkg-price-circle">
+            <div class="pkg-price-inner">
+              <div class="orig-price-row"><span class="rupee-sym-sm">₹</span><span class="orig-price">2300</span></div>
+              <div class="sale-price-row"><span class="rupee-sym">₹</span><span class="sale-price">499</span></div>
+            </div>
+          </div>
+          <button class="pkg-book-btn" aria-label="Book Basic Health Package for 499 rupees">Book Now</button>
+        </div>
+      </article>
+
+      <!-- 4. KidCare Essential Package -->
+      <article class="package-card pkg-hidden" data-pkg-index="3" aria-label="KidCare Essential Package">
+        <div class="pkg-content">
+          <div class="pkg-discount-badge">
+            <span class="upto">UPTO</span>
+            <span class="pct">58%</span>
+            <span class="off">OFF</span>
+          </div>
+          <h3 class="pkg-title">KidCare Essential Package</h3>
+          <p class="pkg-desc">Designed for growing children, this package covers essential screenings for nutrition, thyroid health, and more.</p>
+          <span class="pkg-test-badge">Test Included: 90</span>
+        </div>
+        <div class="pkg-bottom">
+          <div class="pkg-price-circle">
+            <div class="pkg-price-inner">
+              <div class="orig-price-row"><span class="rupee-sym-sm">₹</span><span class="orig-price">4300</span></div>
+              <div class="sale-price-row"><span class="rupee-sym">₹</span><span class="sale-price">1810</span></div>
+            </div>
+          </div>
+          <button class="pkg-book-btn" aria-label="Book KidCare Essential Package for 1810 rupees">Book Now</button>
+        </div>
+      </article>
+
+      <!-- 5. Corporate Health Package -->
+      <article class="package-card pkg-hidden" data-pkg-index="4" aria-label="Corporate Health Package">
+        <div class="pkg-content">
+          <div class="pkg-discount-badge">
+            <span class="upto">UPTO</span>
+            <span class="pct">52%</span>
+            <span class="off">OFF</span>
+          </div>
+          <h3 class="pkg-title">Corporate Health Package</h3>
+          <p class="pkg-desc">Going beyond advanced for busy professionals, this package offers insights into heart risk, HbA1c, thyroid, and more.</p>
+          <span class="pkg-test-badge">Test Included: 70</span>
+        </div>
+        <div class="pkg-bottom">
+          <div class="pkg-price-circle">
+            <div class="pkg-price-inner">
+              <div class="orig-price-row"><span class="rupee-sym-sm">₹</span><span class="orig-price">2599</span></div>
+              <div class="sale-price-row"><span class="rupee-sym">₹</span><span class="sale-price">1249</span></div>
+            </div>
+          </div>
+          <button class="pkg-book-btn" aria-label="Book Corporate Health Package for 1249 rupees">Book Now</button>
+        </div>
+      </article>
+
+    </div>
+    <div class="carousel-dots" id="pkgDots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+      <span class="dot" data-index="4"></span>
+    </div>
+  </section>
+
+  <!-- Trust Section -->
+  <section aria-label="Why choose Flebo">
+    <div class="trust-section">
+      <h3>Why Trust Flebo?</h3>
+      <div class="trust-stats">
+        <div class="trust-stat">
+          <div class="stat-num">160+</div>
+          <div class="stat-label">Lab Partners</div>
+        </div>
+        <div class="trust-stat">
+          <div class="stat-num">4.6★</div>
+          <div class="stat-label">App Rating</div>
+        </div>
+        <div class="trust-stat">
+          <div class="stat-num">10L+</div>
+          <div class="stat-label">Tests Booked</div>
+        </div>
+        <div class="trust-stat">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Cities</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Offer Banner -->
+  <section aria-label="Special offer on health tests and packages">
+    <div class="special-offer-banner" tabindex="0" role="link">
+      <img src="special-offer-banner.png" alt="Special Offer: 50% Cashback + 20% Off on health tests and packages. Use coupon FLEBO2050 on your first booking." loading="lazy">
+    </div>
+  </section>
+
+  <!-- Tests by Category -->
+  <section class="tests-category-section" aria-label="Tests by Category">
+    <div class="section-header">
+      <h2>Tests by Category</h2>
+      <button class="see-all" aria-label="View all tests by category">View All <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="tests-category-scroll">
+      <div class="test-cat-item" tabindex="0" aria-label="Bone tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/bone.svg')"></div></div>
+        <span class="test-cat-label">Bone</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Diabetes tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/diabetes.svg')"></div></div>
+        <span class="test-cat-label">Diabetes</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Gastro tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/gastro.svg')"></div></div>
+        <span class="test-cat-label">Gastro</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Gynae tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/gynae.svg')"></div></div>
+        <span class="test-cat-label">Gynae</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Heart tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/heart.svg')"></div></div>
+        <span class="test-cat-label">Heart</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Kidney tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/kidney.svg')"></div></div>
+        <span class="test-cat-label">Kidney</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Liver tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/liver.svg')"></div></div>
+        <span class="test-cat-label">Liver</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Prostate tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/prostate.svg')"></div></div>
+        <span class="test-cat-label">Prostate</span>
+      </div>
+      <div class="test-cat-item" tabindex="0" aria-label="Thyroid tests">
+        <div class="test-cat-circle"><div class="cat-icon" style="background-image:url('popular-tests/thyroid.svg')"></div></div>
+        <span class="test-cat-label">Thyroid</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Radiology Tests -->
+  <section aria-label="Radiology tests">
+    <div class="section-header" style="margin-top:20px;">
+      <h2>Radiology Tests</h2>
+      <button class="see-all" aria-label="See all radiology tests">View All <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="radiology-scroll">
+      <article class="radio-card">
+        <div class="radio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1516069677018-378515003435?w=520&h=360&fit=crop" alt="Digital X-ray room with modern equipment">
+        </div>
+        <div class="radio-info">
+          <h4>Digital X-ray</h4>
+          <p class="radio-desc">Precision imaging for bone health and chest scans.</p>
+          <div class="radio-bottom">
+            <div class="radio-price-block">
+              <div class="radio-price-label">Starting @</div>
+              <div class="radio-price-value">₹200</div>
+            </div>
+            <button class="radio-book-btn" aria-label="Book digital x-ray starting at 200 rupees">Book Now</button>
+          </div>
+        </div>
+      </article>
+      <article class="radio-card">
+        <div class="radio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=520&h=360&fit=crop" alt="Ultrasound scanning equipment">
+        </div>
+        <div class="radio-info">
+          <h4>Ultrasound</h4>
+          <p class="radio-desc">Non-invasive sound wave imaging for internal organs.</p>
+          <div class="radio-bottom">
+            <div class="radio-price-block">
+              <div class="radio-price-label">Starting @</div>
+              <div class="radio-price-value">₹800</div>
+            </div>
+            <button class="radio-book-btn" aria-label="Book ultrasound starting at 800 rupees">Book Now</button>
+          </div>
+        </div>
+      </article>
+      <article class="radio-card">
+        <div class="radio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=520&h=360&fit=crop" alt="CT scan machine in hospital">
+        </div>
+        <div class="radio-info">
+          <h4>CT Scan</h4>
+          <p class="radio-desc">Detailed cross-sectional imaging for accurate diagnosis.</p>
+          <div class="radio-bottom">
+            <div class="radio-price-block">
+              <div class="radio-price-label">Starting @</div>
+              <div class="radio-price-value">₹1500</div>
+            </div>
+            <button class="radio-book-btn" aria-label="Book CT scan starting at 1500 rupees">Book Now</button>
+          </div>
+        </div>
+      </article>
+      <article class="radio-card">
+        <div class="radio-img-wrap">
+          <img src="https://images.unsplash.com/photo-1559757175-7cb056fba93d?w=520&h=360&fit=crop" alt="MRI scanning machine">
+        </div>
+        <div class="radio-info">
+          <h4>MRI Scan</h4>
+          <p class="radio-desc">High-resolution magnetic imaging for soft tissues & brain.</p>
+          <div class="radio-bottom">
+            <div class="radio-price-block">
+              <div class="radio-price-label">Starting @</div>
+              <div class="radio-price-value">₹3000</div>
+            </div>
+            <button class="radio-book-btn" aria-label="Book MRI scan starting at 3000 rupees">Book Now</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Check Your Vitals -->
+  <section aria-label="Health concerns">
+    <div class="section-header" style="margin-bottom:14px;">
+      <h2>Check Your Vitals</h2>
+      <button class="see-all">See all <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="concerns-bento">
+      <article class="concern-card card-large" aria-label="Fever related tests">
+        <div class="cc-bg" style="background-image:url('hc-fever.jpg')"></div>
+        <span class="cc-pill">Fever</span>
+      </article>
+      <article class="concern-card" aria-label="STD Care tests">
+        <div class="cc-bg" style="background-image:url('hc-std.jpg')"></div>
+        <span class="cc-pill">STD Care</span>
+      </article>
+      <article class="concern-card" aria-label="Diabetes related tests">
+        <div class="cc-bg" style="background-image:url('hc-diabetes.jpg')"></div>
+        <span class="cc-pill">Diabetes</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- Habit Analysis Tests -->
+  <section aria-label="Lifestyle concerns">
+    <div class="section-header">
+      <h2>Habit Analysis Tests</h2>
+      <button class="see-all">See all <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+    <div class="lifestyle-grid">
+      <button class="lifestyle-chip" aria-label="Smoking related tests">
+        <div class="lc-bg" style="background-image:url('lc-smoking.jpg')"></div>
+        <div class="lc-overlay"></div>
+        <span class="lc-label">Smoking</span>
+      </button>
+      <button class="lifestyle-chip" aria-label="Alcohol related tests">
+        <div class="lc-bg" style="background-image:url('lc-alcohol.jpg')"></div>
+        <div class="lc-overlay"></div>
+        <span class="lc-label">Alcohol</span>
+      </button>
+      <button class="lifestyle-chip" aria-label="Stress related tests">
+        <div class="lc-bg" style="background-image:url('lc-stress.jpg')"></div>
+        <div class="lc-overlay"></div>
+        <span class="lc-label">Stress</span>
+      </button>
+      <button class="lifestyle-chip" aria-label="Fitness related tests">
+        <div class="lc-bg" style="background-image:url('lc-fitness.jpg')"></div>
+        <div class="lc-overlay"></div>
+        <span class="lc-label">Fitness</span>
+      </button>
+      <button class="lifestyle-chip" aria-label="Diet related tests">
+        <div class="lc-bg" style="background-image:url('lc-diet.jpg')"></div>
+        <div class="lc-overlay"></div>
+        <span class="lc-label">Diet</span>
+      </button>
+      <button class="lifestyle-chip" aria-label="Sleep related tests">
+        <div class="lc-bg" style="background-image:url('lc-sleep.jpg')"></div>
+        <div class="lc-overlay"></div>
+        <span class="lc-label">Sleep</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Media Coverage -->
+  <section class="media-coverage-section" aria-label="Media Coverage">
+    <h2>Media Coverage</h2>
+    <div class="media-player-stack">
+      <div class="media-player-card">
+        <button class="media-player-close" id="mediaPlayerClose" aria-label="Close">&times;</button>
+        <div class="media-player-thumb" id="mediaPlayerThumb">
+          <img id="mediaPlayerImg" src="media-thumbs/thumb-1.webp" alt="Media Coverage">
+        </div>
+        <div class="media-player-progress">
+          <div class="media-player-progress-bar" id="mediaProgressBar"></div>
+        </div>
+        <div class="media-player-controls">
+          <button class="ctrl-btn" id="mediaPrev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4"/><line x1="5" y1="19" x2="5" y2="5"/></svg></button>
+          <button class="ctrl-main" id="mediaPlayPause" aria-label="Play/Pause"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+          <button class="ctrl-btn" id="mediaNext" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
+          <span class="ctrl-spacer"></span>
+          <button class="ctrl-btn" id="mediaMute" aria-label="Mute"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></button>
+          <button class="ctrl-btn" id="mediaFullscreen" aria-label="Fullscreen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <!-- Hidden data source for media items -->
+    <div id="mediaItemsData" style="display:none"
+      data-items='[
+        {"thumb":"media-thumbs/thumb-1.webp","title":"ALERT: Doctor Consultation Now Available!"},
+        {"thumb":"media-thumbs/thumb-2.webp","title":"Flebo.in Presents A One-Stop Destination For All Healthcare Data"},
+        {"thumb":"media-thumbs/thumb-3.webp","title":"Flebo.in Launches India First AI Healthcare News Channel"},
+        {"thumb":"media-thumbs/thumb-4.webp","title":"New & Disruptive Health Trend Graphs"},
+        {"thumb":"media-thumbs/thumb-5.webp","title":"Get Personalised Health Packages"}
+      ]'>
+    </div>
+  </section>
+
+  <!-- Video Popup -->
+  <div class="video-popup-overlay" id="videoPopup">
+    <div class="video-popup-container">
+      <button class="video-popup-close" id="videoPopupClose"><i class="fas fa-times"></i></button>
+      <div class="video-popup-player" id="videoPopupPlayer">
+        <img id="videoPopupImg" src="" alt="">
+        <div class="video-popup-play-btn" id="videoPopupPlayBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path d="M217.831 22.578c-92.32-52.956-167.166-9.574-167.166 96.819V904.53c0 106.496 74.846 149.821 167.166 96.916l686.243-393.554c92.349-52.977 92.349-138.803 0-191.764L217.831 22.578z"/></svg></div>
+      </div>
+      <div class="video-popup-info">
+        <h4 id="videoPopupTitle"></h4>
+        <p id="videoPopupSource"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section" aria-label="Customer Testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-carousel" id="testimonialCarousel">
+
+      <div class="testimonial-card active" data-index="0">
+        <div class="testimonial-quote-icon">&#10077;&#10077;</div>
+        <div class="testimonial-body">
+          <div class="testimonial-avatar">👨</div>
+          <div class="testimonial-text">Flebo.in has made it so easy for me to track my past results. I had low levels of Vitamin D and over the last 6 months have been easily able to monitor and improve my results with the help of their health trend graphs. Would highly recommend this service to others!</div>
+        </div>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Paarth Khanna</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+          <div class="testimonial-close-quote">&#10078;&#10078;</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-index="1">
+        <div class="testimonial-quote-icon">&#10077;&#10077;</div>
+        <div class="testimonial-body">
+          <div class="testimonial-avatar">👩</div>
+          <div class="testimonial-text">Booked a full body checkup for my parents through Flebo.in. The phlebotomist came right on time, was very professional, and reports were delivered within 24 hours. The prices are much lower than what we used to pay at the lab directly. Very happy with the service!</div>
+        </div>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Sneha Mehta</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+          <div class="testimonial-close-quote">&#10078;&#10078;</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-index="2">
+        <div class="testimonial-quote-icon">&#10077;&#10077;</div>
+        <div class="testimonial-body">
+          <div class="testimonial-avatar">👨‍💼</div>
+          <div class="testimonial-text">I was skeptical about online lab booking but Flebo.in changed my mind completely. Got a corporate health package for my entire team at 50% less than market rates. Reports are easy to read and the customer support team is excellent. 10/10 would recommend!</div>
+        </div>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Rajiv Sharma</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+          <div class="testimonial-close-quote">&#10078;&#10078;</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-index="3">
+        <div class="testimonial-quote-icon">&#10077;&#10077;</div>
+        <div class="testimonial-body">
+          <div class="testimonial-avatar">👩‍⚕️</div>
+          <div class="testimonial-text">As a doctor, I recommend Flebo.in to all my patients. The lab partners are NABL certified, pricing is transparent, and the health trend tracking feature helps me monitor my patients' progress over time. A truly innovative healthcare platform!</div>
+        </div>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Dr. Ananya Gupta</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+          <div class="testimonial-close-quote">&#10078;&#10078;</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-index="4">
+        <div class="testimonial-quote-icon">&#10077;&#10077;</div>
+        <div class="testimonial-body">
+          <div class="testimonial-avatar">🧑</div>
+          <div class="testimonial-text">Best experience ever! I booked a diabetes screening and the entire process from booking to report delivery was seamless. The app is very user-friendly and I love how I can compare my results over different time periods. Great job Flebo team!</div>
+        </div>
+        <div class="testimonial-footer">
+          <div>
+            <div class="testimonial-name">Vikram Patel</div>
+            <div class="testimonial-stars">★★★★<span style="opacity:0.3">★</span></div>
+          </div>
+          <div class="testimonial-close-quote">&#10078;&#10078;</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="carousel-dots" id="testimonialDots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
+      <span class="dot" data-index="4"></span>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <img src="flebo-logo.svg" alt="Flebo.in" class="footer-logo">
+  <p class="footer-desc">Your one-stop solution for convenient booking, painless sample collection and timely reporting of all medical tests. Your diagnosis is our priority, always. Taking a step towards healthy living? We are here for you!</p>
+
+  <div class="footer-contact-row">
+    <div class="footer-contact-icon"><i class="fas fa-headset"></i></div>
+    <div>
+      <div class="footer-contact-label">Contact us</div>
+      <div class="footer-contact-value"><a href="tel:01244550000">012 44 55 0000</a></div>
+    </div>
+  </div>
+
+  <div class="footer-contact-row">
+    <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+    <div>
+      <div class="footer-contact-label">Reach out to us</div>
+      <div class="footer-contact-value"><a href="mailto:customercare@flebo.in">customercare@flebo.in</a></div>
+    </div>
+  </div>
+
+  <hr class="footer-divider">
+
+  <h3 class="footer-links-title">Quick Links</h3>
+  <div class="footer-links-grid">
+    <a href="#" class="footer-link">Packages</a>
+    <a href="#" class="footer-link">Blog</a>
+    <a href="#" class="footer-link">Bookings</a>
+    <a href="#" class="footer-link">Contact</a>
+    <a href="#" class="footer-link">Reports</a>
+    <a href="#" class="footer-link">Press Coverage</a>
+    <a href="#" class="footer-link">Register your lab with us</a>
+    <a href="#" class="footer-link">Sitemap</a>
+    <a href="#" class="footer-link">Why Flebo.in</a>
+    <a href="#" class="footer-link">Diagnostic Centers</a>
+  </div>
+</footer>
+
+
+<!-- Bottom Navigation -->
+<nav class="bottom-nav" role="navigation" aria-label="Main navigation">
+  <button class="nav-item active" data-page="home" aria-label="Home, current page" aria-current="page">
+    <i class="fas fa-house" aria-hidden="true"></i>
+    <span class="nav-label">Home</span>
+  </button>
+  <button class="nav-item" data-page="packages" aria-label="Packages">
+    <i class="fas fa-box-open" aria-hidden="true"></i>
+    <span class="nav-label">Packages</span>
+  </button>
+  <button class="nav-item nav-chat" data-page="chat" aria-label="Chat">
+    <img src="doctor2.png" alt="Chat" aria-hidden="true">
+    <span class="nav-label">Chat</span>
+  </button>
+  <button class="nav-item" data-page="tests" aria-label="Tests">
+    <i class="fas fa-flask-vial" aria-hidden="true"></i>
+    <span class="nav-label">Tests</span>
+  </button>
+  <button class="nav-item" data-page="reports" aria-label="Reports">
+    <i class="fas fa-file-medical" aria-hidden="true"></i>
+    <span class="nav-label">Reports</span>
+  </button>
+</nav>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- Modal (Know More) -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Package details">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <h3 id="modalTitle">Package Details</h3>
+    <ul class="test-list" id="modalTestList"></ul>
+    <button class="modal-close" id="modalClose">Close</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+// ===== SIDEBAR MENU =====
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const sidebar = document.getElementById('sidebar');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const sidebarClose = document.getElementById('sidebarClose');
+
+function openSidebar() {
+  sidebar.classList.add('active');
+  sidebarOverlay.classList.add('active');
+  hamburgerBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  sidebar.classList.remove('active');
+  sidebarOverlay.classList.remove('active');
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+hamburgerBtn.addEventListener('click', openSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
+
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active-link'));
+    link.classList.add('active-link');
+    const menu = link.dataset.menu;
+    closeSidebar();
+    if (menu === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      showToast('<i class="fas fa-arrow-right"></i> Opening ' + link.textContent.trim().replace('New','').trim() + '...');
+    }
+  });
+});
+
+// ===== HEADER SCROLL EFFECT =====
+const header = document.querySelector('.header');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+// ===== HERO TABS =====
+const heroTabs = document.querySelectorAll('.hero-tab');
+const heroSubtitle = document.getElementById('heroSubtitle');
+const heroTitle = document.getElementById('heroTitle');
+const heroSearchInput = document.getElementById('mainSearch');
+
+const heroContent = {
+  tests: {
+    subtitle: 'Empowering Your Health Journey',
+    title: 'Book tests after comparing prices, ratings and distance of various labs',
+    placeholder: 'Book a Pathology or Radiology Tests'
+  },
+  packages: {
+    subtitle: 'Compare & Choose the Best',
+    title: 'Health Checkup Packages',
+    placeholder: 'Search health packages, checkups...'
+  },
+  doctors: {
+    subtitle: 'Consult Top Doctors',
+    title: 'Book a Tele Consultation',
+    placeholder: 'Search doctors, specialities...'
+  }
+};
+
+const heroDefault = document.getElementById('heroDefault');
+const doctorsPanel = document.getElementById('doctorsPanel');
+const packagesPanel = document.getElementById('packagesPanel');
+const labsPanel = document.getElementById('labsPanel');
+
+function hideAllPanels() {
+  heroDefault.classList.add('hidden');
+  doctorsPanel.classList.remove('active');
+  packagesPanel.classList.remove('active');
+  labsPanel.classList.remove('active');
+}
+
+heroTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    heroTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const key = tab.dataset.hero;
+
+    hideAllPanels();
+
+    if (key === 'doctors') {
+      doctorsPanel.classList.add('active');
+    } else if (key === 'packages') {
+      packagesPanel.classList.add('active');
+    } else if (key === 'labs') {
+      labsPanel.classList.add('active');
+    } else {
+      heroDefault.classList.remove('hidden');
+    }
+  });
+});
+heroSubtitle.style.transition = 'opacity 0.15s';
+heroTitle.style.transition = 'opacity 0.15s';
+
+// Speciality item click & submit
+document.querySelectorAll('.speciality-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const spec = item.querySelector('span').textContent;
+    document.getElementById('specialitySelect').value = item.dataset.spec;
+    showToast('<i class="fas fa-user-doctor"></i> Selected: ' + spec);
+  });
+});
+document.getElementById('specialitySubmit').addEventListener('click', () => {
+  const sel = document.getElementById('specialitySelect');
+  if (sel.value) {
+    showToast('<i class="fas fa-check-circle"></i> Searching ' + sel.options[sel.selectedIndex].text + ' doctors...');
+  } else {
+    showToast('<i class="fas fa-exclamation-circle"></i> Please select a speciality');
+  }
+});
+
+// Tests tab: Locate button
+document.getElementById('testsLocateBtn').addEventListener('click', () => {
+  document.getElementById('testsLocation').value = 'Gurgaon, Haryana';
+  showToast('<i class="fas fa-location-dot"></i> Location detected: Gurgaon');
+});
+
+// Packages panel: Locate & box clicks
+document.getElementById('locateBtn').addEventListener('click', () => {
+  document.getElementById('pkgLocation').value = 'Gurgaon, Haryana';
+  showToast('<i class="fas fa-location-dot"></i> Location detected: Gurgaon');
+});
+document.querySelectorAll('.pkg-box').forEach(box => {
+  box.addEventListener('click', () => {
+    const name = box.querySelector('h4').textContent;
+    showToast('<i class="fas fa-box-open"></i> Viewing ' + name + ' packages...');
+  });
+});
+
+// ===== SEARCH FUNCTIONALITY =====
+const searchInput = document.getElementById('mainSearch');
+const searchSuggestions = document.getElementById('floatingSuggestions');
+const allSuggestions = [
+  { name: 'CBC (Complete Blood Count)', tag: 'Popular', icon: 'fa-fire' },
+  { name: 'Thyroid Profile', tag: 'Popular', icon: 'fa-fire' },
+  { name: 'Lipid Profile', tag: 'Heart', icon: 'fa-vial' },
+  { name: 'HbA1c (Diabetes)', tag: 'Diabetes', icon: 'fa-vial' },
+  { name: 'Vitamin D Test', tag: 'Vitamins', icon: 'fa-vial' },
+  { name: 'Vitamin B12', tag: 'Vitamins', icon: 'fa-vial' },
+  { name: 'Full Body Checkup', tag: 'Package', icon: 'fa-box' },
+  { name: 'Liver Function Test (LFT)', tag: 'Liver', icon: 'fa-vial' },
+  { name: 'Kidney Function Test', tag: 'Kidney', icon: 'fa-vial' },
+  { name: 'Iron Studies', tag: 'Blood', icon: 'fa-vial' },
+  { name: 'Dengue Test', tag: 'Fever', icon: 'fa-vial' },
+  { name: 'COVID RT-PCR', tag: 'Infection', icon: 'fa-vial' },
+];
+
+function positionSuggestions() {
+  const bar = searchInput.closest('.hero-search-bar');
+  const rect = bar.getBoundingClientRect();
+  searchSuggestions.style.top = (rect.bottom + 6) + 'px';
+}
+
+searchInput.addEventListener('focus', () => {
+  if (searchInput.value.length === 0) renderSuggestions(allSuggestions.slice(0, 6));
+  positionSuggestions();
+  searchSuggestions.classList.add('active');
+});
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  if (q.length === 0) {
+    renderSuggestions(allSuggestions.slice(0, 6));
+  } else {
+    const filtered = allSuggestions.filter(s => s.name.toLowerCase().includes(q));
+    renderSuggestions(filtered);
+  }
+});
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.hero-search-bar') && !e.target.closest('#floatingSuggestions')) searchSuggestions.classList.remove('active');
+});
+
+function renderSuggestions(items) {
+  searchSuggestions.innerHTML = items.map(s =>
+    `<div class="suggestion-item" role="option" onclick="selectSuggestion('${s.name}')">
+      <i class="fas ${s.icon}"></i><span>${s.name}</span><small>${s.tag}</small>
+    </div>`
+  ).join('');
+  if (items.length === 0) {
+    searchSuggestions.innerHTML = '<div style="padding:16px;text-align:center;color:var(--text-muted);font-size:13px;">No results found</div>';
+  }
+}
+
+function selectSuggestion(name) {
+  searchInput.value = name;
+  searchSuggestions.classList.remove('active');
+  showToast(`<i class="fas fa-search"></i> Searching for "${name}"...`);
+}
+
+// ===== PACKAGES STACKED CAROUSEL =====
+(function() {
+  const pkgCards = document.querySelectorAll('#packagesGrid .package-card');
+  const pkgDots = document.querySelectorAll('#pkgDots .dot');
+  let pkgCurrent = 0;
+  const pkgTotal = pkgCards.length;
+  const pkgClasses = ['pkg-active', 'pkg-next', 'pkg-behind', 'pkg-hidden'];
+
+  function updatePkgCarousel(index) {
+    pkgCurrent = index;
+    pkgCards.forEach((card, i) => {
+      card.classList.remove('pkg-active', 'pkg-next', 'pkg-behind', 'pkg-hidden');
+      const offset = (i - pkgCurrent + pkgTotal) % pkgTotal;
+      if (offset < pkgClasses.length) {
+        card.classList.add(pkgClasses[offset]);
+      } else {
+        card.classList.add('pkg-hidden');
+      }
+    });
+    pkgDots.forEach((d, i) => d.classList.toggle('active', i === pkgCurrent));
+  }
+
+  // Click active card to go next
+  pkgCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't advance if clicking Book Now button
+      if (e.target.closest('.pkg-book-btn')) return;
+      updatePkgCarousel((pkgCurrent + 1) % pkgTotal);
+    });
+  });
+
+  pkgDots.forEach(dot => {
+    dot.addEventListener('click', () => updatePkgCarousel(parseInt(dot.dataset.index)));
+  });
+
+  // Auto-advance every 3 seconds
+  setInterval(() => updatePkgCarousel((pkgCurrent + 1) % pkgTotal), 3000);
+  updatePkgCarousel(0);
+})();
+
+// ===== PACKAGE CARD BOOK NOW HANDLERS =====
+document.querySelectorAll('.pkg-book-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.package-card');
+    const name = card.querySelector('.pkg-title').textContent;
+    const price = card.querySelector('.sale-price').textContent;
+    showToast(`<i class="fas fa-check-circle"></i> ${name} booked for ₹${price}!`);
+  });
+});
+
+// ===== CATEGORY TABS (legacy data, kept for reference) =====
+const tabs = document.querySelectorAll('.tab-pill');
+const packageData = {
+  popular: [
+    { name: 'Flebo Prime Care', sub: 'Diabetic Checkup', tests: 71, price: 1179, oldPrice: 2040, badge: 'Verified Lab', icon: 'fa-shield-halved', discount: 'Upto 42% off' },
+    { name: 'Healthy India 2026', sub: 'Full Body Checkup Lite', tests: 80, price: 1046, oldPrice: 2180, badge: 'Bestseller', icon: 'fa-star', discount: 'Upto 52% off' },
+    { name: 'Flebo She Care', sub: "Women's Health Package", tests: 65, price: 1299, oldPrice: 2500, badge: "Women's Care", icon: 'fa-heart-pulse', discount: '' },
+    { name: 'Advanced Full Body', sub: 'Comprehensive Checkup', tests: 92, price: 1599, oldPrice: 3200, badge: 'Value Pack', icon: 'fa-bolt', discount: '' },
+  ],
+  fever: [
+    { name: 'Fever Panel Basic', sub: 'Dengue + Malaria + Typhoid', tests: 12, price: 599, oldPrice: 1200, badge: 'Quick Results', icon: 'fa-bolt', discount: 'Upto 50% off' },
+    { name: 'Fever Panel Advanced', sub: 'Complete Infection Screen', tests: 28, price: 999, oldPrice: 2100, badge: 'Comprehensive', icon: 'fa-shield-halved', discount: 'Upto 52% off' },
+    { name: 'Dengue NS1 + IgG/IgM', sub: 'Dengue Detection', tests: 3, price: 450, oldPrice: 900, badge: 'Fast Track', icon: 'fa-clock', discount: '' },
+    { name: 'Malaria Panel', sub: 'P. vivax + P. falciparum', tests: 5, price: 350, oldPrice: 700, badge: 'Seasonal', icon: 'fa-sun', discount: '' },
+  ],
+  std: [
+    { name: 'STD Basic Panel', sub: 'HIV + Hepatitis B & C', tests: 8, price: 899, oldPrice: 1800, badge: 'Confidential', icon: 'fa-lock', discount: 'Upto 50% off' },
+    { name: 'STD Comprehensive', sub: 'Full STD Screening', tests: 18, price: 1631, oldPrice: 5438, badge: 'Complete', icon: 'fa-shield-halved', discount: 'Upto 70% off' },
+    { name: 'HIV Screening', sub: 'HIV 1 & 2 Antibody', tests: 2, price: 399, oldPrice: 800, badge: 'Discrete', icon: 'fa-user-shield', discount: '' },
+    { name: 'Hepatitis Panel', sub: 'Hep A, B, C Markers', tests: 6, price: 750, oldPrice: 1500, badge: 'Liver Safe', icon: 'fa-heart-pulse', discount: '' },
+  ],
+  vitamins: [
+    { name: 'Vitamin D + B12', sub: 'Most Common Deficiencies', tests: 4, price: 599, oldPrice: 1400, badge: 'Most Booked', icon: 'fa-fire', discount: 'Upto 57% off' },
+    { name: 'Complete Vitamin Panel', sub: 'All Essential Vitamins', tests: 14, price: 1299, oldPrice: 3000, badge: 'Comprehensive', icon: 'fa-shield-halved', discount: 'Upto 57% off' },
+    { name: 'Iron + Vitamin Panel', sub: 'Anemia Prevention', tests: 8, price: 799, oldPrice: 1600, badge: 'Women Special', icon: 'fa-heart-pulse', discount: '' },
+    { name: 'Bone Health Panel', sub: 'Calcium + Vitamin D3', tests: 6, price: 699, oldPrice: 1400, badge: 'Senior Care', icon: 'fa-bone', discount: '' },
+  ],
+  diabetes: [
+    { name: 'Diabetes Screening', sub: 'HbA1c + Fasting Glucose', tests: 6, price: 499, oldPrice: 1000, badge: 'Essential', icon: 'fa-droplet', discount: 'Upto 50% off' },
+    { name: 'Diabetes Advanced', sub: 'Complete Sugar Profile', tests: 22, price: 999, oldPrice: 2200, badge: 'Recommended', icon: 'fa-star', discount: 'Upto 55% off' },
+    { name: 'Pre-Diabetes Check', sub: 'Early Detection', tests: 8, price: 599, oldPrice: 1200, badge: 'Prevention', icon: 'fa-shield-halved', discount: '' },
+    { name: 'Diabetes Monitor', sub: 'Quarterly Tracking', tests: 10, price: 699, oldPrice: 1400, badge: 'Follow-up', icon: 'fa-chart-line', discount: '' },
+  ],
+  heart: [
+    { name: 'Cardiac Risk Panel', sub: 'Lipid + Homocysteine', tests: 10, price: 899, oldPrice: 2000, badge: 'Essential', icon: 'fa-heart', discount: 'Upto 55% off' },
+    { name: 'Heart Health Complete', sub: 'Advanced Cardiac Screen', tests: 30, price: 1599, oldPrice: 3800, badge: 'Complete', icon: 'fa-shield-halved', discount: 'Upto 58% off' },
+    { name: 'Cholesterol Panel', sub: 'Lipid Profile Extended', tests: 8, price: 499, oldPrice: 1000, badge: 'Quick Check', icon: 'fa-bolt', discount: '' },
+    { name: 'BP + Heart Screen', sub: 'Hypertension Risk', tests: 15, price: 1099, oldPrice: 2500, badge: 'Preventive', icon: 'fa-heart-pulse', discount: '' },
+  ],
+  thyroid: [
+    { name: 'Thyroid Basic', sub: 'TSH + T3 + T4', tests: 3, price: 299, oldPrice: 600, badge: 'Quick', icon: 'fa-bolt', discount: 'Upto 50% off' },
+    { name: 'Thyroid Complete', sub: 'Full Thyroid Panel', tests: 8, price: 699, oldPrice: 1500, badge: 'Complete', icon: 'fa-shield-halved', discount: 'Upto 53% off' },
+    { name: 'Thyroid + Vitamin Panel', sub: 'Thyroid & Deficiency', tests: 12, price: 899, oldPrice: 2000, badge: 'Combo', icon: 'fa-layer-group', discount: '' },
+    { name: 'Thyroid Antibody', sub: 'Anti-TPO + Anti-TG', tests: 5, price: 599, oldPrice: 1200, badge: 'Advanced', icon: 'fa-microscope', discount: '' },
+  ],
+  liver: [
+    { name: 'LFT Basic', sub: 'Liver Function Test', tests: 12, price: 399, oldPrice: 800, badge: 'Essential', icon: 'fa-droplet', discount: 'Upto 50% off' },
+    { name: 'Liver Health Complete', sub: 'Comprehensive Screen', tests: 28, price: 1471, oldPrice: 4906, badge: 'Complete', icon: 'fa-shield-halved', discount: 'Upto 70% off' },
+    { name: 'Hepatitis Screening', sub: 'Hep B + C + LFT', tests: 15, price: 899, oldPrice: 1800, badge: 'Important', icon: 'fa-exclamation-triangle', discount: '' },
+    { name: 'Fatty Liver Panel', sub: 'NAFLD Assessment', tests: 10, price: 699, oldPrice: 1400, badge: 'Trending', icon: 'fa-fire', discount: '' },
+  ],
+};
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const category = tab.dataset.tab;
+    renderPackages(packageData[category] || packageData.popular);
+  });
+});
+
+function renderPackages(data) {
+  const grid = document.getElementById('packagesGrid');
+  grid.style.opacity = '0';
+  setTimeout(() => {
+    grid.innerHTML = data.map(p => `
+      <article class="package-card">
+        <span class="package-badge"><i class="fas ${p.icon}" aria-hidden="true"></i> ${p.badge}</span>
+        ${p.discount ? `<span class="package-discount-badge">${p.discount}</span>` : ''}
+        <h3>${p.name}</h3>
+        <div class="sub-name">${p.sub}</div>
+        <div class="test-count"><i class="fas fa-vial" aria-hidden="true"></i> ${p.tests} Tests</div>
+        <button class="know-more" onclick="openModal('${p.name}', ${p.tests})" aria-label="Know more about ${p.name}">Know more+</button>
+        <div class="package-pricing">
+          <div class="exclusive-label">Exclusive Offer</div>
+          <div class="price-row">
+            <span class="price-new" aria-label="Price ${p.price} rupees">₹${p.price}</span>
+            <span class="price-old" aria-label="Original price ${p.oldPrice} rupees"><del>₹${p.oldPrice}</del></span>
+          </div>
+        </div>
+        <button class="book-now-btn" onclick="addToCart('${p.name}', ${p.price})" aria-label="Book ${p.name} for ${p.price} rupees">
+          <i class="fas fa-calendar-check" aria-hidden="true"></i> Book Now
+        </button>
+      </article>
+    `).join('');
+    grid.style.transition = 'opacity 0.3s';
+    grid.style.opacity = '1';
+  }, 150);
+}
+
+// ===== CART FUNCTIONALITY =====
+let cartCount = 0;
+const cartBadge = document.createElement('span');
+cartBadge.className = 'badge';
+cartBadge.style.display = 'none';
+const cartBtn = document.getElementById('cartBtn');
+if (cartBtn) cartBtn.appendChild(cartBadge);
+
+function addToCart(name, price) {
+  cartCount++;
+  cartBadge.textContent = cartCount;
+  cartBadge.style.display = 'flex';
+  cartBadge.style.animation = 'none';
+  cartBadge.offsetHeight; // reflow
+  cartBadge.style.animation = 'pop 0.3s ease';
+  showToast(`<i class="fas fa-check-circle"></i> ${name} added to cart!`);
+}
+
+// Add pop keyframe
+const style = document.createElement('style');
+style.textContent = '@keyframes pop { 0% { transform: scale(0); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }';
+document.head.appendChild(style);
+
+// ===== MODAL =====
+const modalOverlay = document.getElementById('modalOverlay');
+const modalTitle = document.getElementById('modalTitle');
+const modalTestList = document.getElementById('modalTestList');
+const modalClose = document.getElementById('modalClose');
+
+const sampleTests = [
+  'Complete Blood Count (CBC)', 'Hemoglobin (Hb)', 'ESR', 'Blood Sugar Fasting',
+  'HbA1c', 'Lipid Profile', 'Liver Function Test (LFT)', 'Kidney Function Test (KFT)',
+  'Thyroid Profile (T3, T4, TSH)', 'Urine Routine', 'Vitamin D', 'Vitamin B12',
+  'Iron Studies', 'Calcium', 'Uric Acid', 'Creatinine', 'Electrolytes',
+  'CRP (C-Reactive Protein)', 'Blood Group & Rh Factor', 'Peripheral Smear'
+];
+
+function openModal(name, testCount) {
+  modalTitle.textContent = name;
+  const tests = sampleTests.slice(0, Math.min(testCount, 20));
+  modalTestList.innerHTML = tests.map(t =>
+    `<li><i class="fas fa-check-circle" aria-hidden="true"></i> ${t}</li>`
+  ).join('');
+  if (testCount > 20) {
+    modalTestList.innerHTML += `<li style="color:var(--primary);font-weight:600;">+ ${testCount - 20} more tests included</li>`;
+  }
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+function closeModal() {
+  modalOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== TOAST =====
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.innerHTML = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ===== BOTTOM NAV =====
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    navItems.forEach(n => { n.classList.remove('active'); n.removeAttribute('aria-current'); });
+    item.classList.add('active');
+    item.setAttribute('aria-current', 'page');
+    const page = item.dataset.page;
+    if (page === 'call') {
+      window.location.href = 'tel:01244550000';
+    } else if (page === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      showToast(`<i class="fas fa-info-circle"></i> ${page.charAt(0).toUpperCase() + page.slice(1)} page coming soon!`);
+    }
+  });
+});
+
+// ===== LOCATION SELECTOR =====
+const cities = ['Gurgaon', 'Delhi', 'Mumbai', 'Bangalore', 'Hyderabad', 'Chennai', 'Pune', 'Kolkata', 'Noida', 'Jaipur'];
+let cityIndex = 0;
+const locationBtn = document.getElementById('locationBtn');
+if (locationBtn) {
+  locationBtn.addEventListener('click', () => {
+    cityIndex = (cityIndex + 1) % cities.length;
+    locationBtn.innerHTML = `<i class="fas fa-location-dot"></i> ${cities[cityIndex]} <i class="fas fa-chevron-down"></i>`;
+    showToast(`<i class="fas fa-location-dot"></i> Location changed to ${cities[cityIndex]}`);
+  });
+}
+
+// ===== MEDIA COVERAGE PLAYER =====
+(function() {
+  const dataEl = document.getElementById('mediaItemsData');
+  const items = JSON.parse(dataEl.dataset.items);
+  let currentIndex = 0;
+  let autoplayTimer = null;
+
+  const img = document.getElementById('mediaPlayerImg');
+  const progressBar = document.getElementById('mediaProgressBar');
+  const prevBtn = document.getElementById('mediaPrev');
+  const nextBtn = document.getElementById('mediaNext');
+  const playPauseBtn = document.getElementById('mediaPlayPause');
+  const closeBtn = document.getElementById('mediaPlayerClose');
+  let isPlaying = true;
+
+  function showSlide(index) {
+    currentIndex = (index + items.length) % items.length;
+    img.src = items[currentIndex].thumb;
+    img.alt = items[currentIndex].title;
+    progressBar.style.width = ((currentIndex + 1) / items.length * 100) + '%';
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    isPlaying = true;
+    updatePlayPauseIcon();
+    autoplayTimer = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 3000);
+  }
+
+  function stopAutoplay() {
+    isPlaying = false;
+    updatePlayPauseIcon();
+    if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+  }
+
+  function updatePlayPauseIcon() {
+    if (isPlaying) {
+      playPauseBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+    } else {
+      playPauseBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    }
+  }
+
+  prevBtn.addEventListener('click', () => { showSlide(currentIndex - 1); if (isPlaying) startAutoplay(); });
+  nextBtn.addEventListener('click', () => { showSlide(currentIndex + 1); if (isPlaying) startAutoplay(); });
+  playPauseBtn.addEventListener('click', () => { isPlaying ? stopAutoplay() : startAutoplay(); });
+  closeBtn.addEventListener('click', () => {
+    document.querySelector('.media-coverage-section').style.display = 'none';
+  });
+
+  // Open video popup on thumbnail click
+  const popup = document.getElementById('videoPopup');
+  const popupImg = document.getElementById('videoPopupImg');
+  const popupPlayBtn = document.getElementById('videoPopupPlayBtn');
+  const popupPlayer = document.getElementById('videoPopupPlayer');
+  const popupTitle = document.getElementById('videoPopupTitle');
+  const popupSource = document.getElementById('videoPopupSource');
+  const popupClose = document.getElementById('videoPopupClose');
+  let videoEl = null;
+
+  document.getElementById('mediaPlayerThumb').addEventListener('click', () => {
+    const item = items[currentIndex];
+    popupTitle.textContent = item.title;
+    popupSource.textContent = 'Flebo.in';
+    popupImg.src = item.thumb;
+    popupImg.alt = item.title;
+    popupImg.style.display = 'block';
+    popupPlayBtn.classList.remove('hidden');
+    if (videoEl) { videoEl.remove(); videoEl = null; }
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    stopAutoplay();
+  });
+
+  popupPlayBtn.addEventListener('click', () => {
+    popupImg.style.display = 'none';
+    popupPlayBtn.classList.add('hidden');
+    videoEl = document.createElement('video');
+    videoEl.controls = true;
+    videoEl.autoplay = true;
+    videoEl.playsInline = true;
+    videoEl.poster = popupImg.src;
+    videoEl.src = popupImg.src;
+    popupPlayer.appendChild(videoEl);
+    videoEl.play().catch(() => {});
+  });
+
+  function closePopup() {
+    popup.classList.remove('show');
+    if (videoEl) { videoEl.pause(); videoEl.remove(); videoEl = null; }
+    popupImg.src = '';
+    popupImg.style.display = 'block';
+    popupPlayBtn.classList.remove('hidden');
+    document.body.style.overflow = '';
+    startAutoplay();
+  }
+  popupClose.addEventListener('click', closePopup);
+  popup.addEventListener('click', (e) => { if (e.target === popup) closePopup(); });
+
+  // Init
+  showSlide(0);
+  startAutoplay();
+})();
+
+// ===== PRESCRIPTION POPUP =====
+const prescInfoBtn = document.getElementById('prescriptionInfoBtn');
+const prescPopup = document.getElementById('prescriptionPopup');
+const prescPopupClose = document.getElementById('prescriptionPopupClose');
+if (prescInfoBtn && prescPopup) {
+  prescInfoBtn.addEventListener('click', () => prescPopup.classList.add('active'));
+}
+if (prescPopupClose && prescPopup) {
+  prescPopupClose.addEventListener('click', () => prescPopup.classList.remove('active'));
+}
+
+// ===== PACKAGE CATEGORY TABS =====
+document.querySelectorAll('.pkg-cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.pkg-cat-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    showToast('<i class="fas fa-filter"></i> Showing ' + tab.textContent + ' packages');
+  });
+});
+
+// ===== TESTIMONIALS CAROUSEL (auto-scroll 3s) =====
+(function() {
+  const cards = document.querySelectorAll('.testimonial-card');
+  if (cards.length === 0) return;
+  let current = 0;
+
+  function showCard(index) {
+    cards.forEach(c => { c.classList.remove('active', 'exit'); });
+    cards[current].classList.add('exit');
+    current = (index + cards.length) % cards.length;
+    cards[current].classList.add('active');
+  }
+
+  setInterval(() => showCard(current + 1), 3000);
+})();
+
+</script>
+</body>
+</html>
