@@ -136,6 +136,124 @@ input, select { font-family: inherit; }
 .top-bar-locate i {
   color: var(--accent);
 }
+/* ===== PINCODE POPUP ===== */
+.pincode-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 9998;
+}
+.pincode-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  z-index: 9999;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(48,76,124,0.22);
+  width: 290px;
+  overflow: hidden;
+  animation: pincodeSlideIn 0.22s ease forwards;
+}
+@keyframes pincodeSlideIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.93); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+.pincode-popup.open,
+.pincode-overlay.open { display: block; }
+.pincode-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #304c7c;
+  color: #fff;
+  padding: 13px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.pincode-popup-header i { margin-right: 6px; font-size: 15px; }
+.pincode-close-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.pincode-close-btn:hover { background: rgba(255,255,255,0.3); }
+.pincode-popup-body {
+  padding: 16px 16px 18px;
+}
+.pincode-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.pincode-input {
+  flex: 1;
+  width: 100px;
+  border: 1.5px solid #d0d5e8;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #304c7c;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+  background: #eef1f8;
+}
+.pincode-input::placeholder { color: #9aa3bc; font-weight: 400; }
+.pincode-input:focus {
+  border-color: #304c7c;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(48,76,124,0.12);
+}
+.pincode-gps-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1.5px solid #304c7c;
+  background: #eef1f8;
+  color: #304c7c;
+  font-size: 17px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.pincode-gps-btn:hover { background: #304c7c; color: #fff; }
+.pincode-hint {
+  font-size: 10px;
+  color: #8a93b0;
+  margin: 0 0 14px;
+}
+.pincode-apply-btn {
+  width: 100%;
+  padding: 11px;
+  background: #304c7c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+}
+.pincode-apply-btn:hover { opacity: 0.9; }
 
 /* ===== HEADER ===== */
 .header {
@@ -169,6 +287,12 @@ input, select { font-family: inherit; }
   height: 40px;
   width: auto;
 }
+.upload-report-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
 .upload-report-btn {
   display: flex;
   align-items: center;
@@ -182,6 +306,14 @@ input, select { font-family: inherit; }
   border: 1.5px solid var(--accent);
   cursor: pointer;
   transition: all 0.25s;
+}
+.upload-report-tags {
+  font-size: 7px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+  opacity: 0.85;
+  text-align: center;
 }
 .upload-report-btn .vault-icon {
   width: 20px;
@@ -2700,10 +2832,10 @@ main { padding: 0 16px; }
 <!-- ===== HEADER ===== -->
 <!-- Top Bar -->
 <div class="top-bar">
-  <div class="top-bar-left">
+  <div class="top-bar-left" id="locationTrigger" style="cursor:pointer;" title="Change location">
     <i class="fas fa-location-dot"></i>
-    <span>Gurgaon, 122001</span>
-    <a href="#" aria-label="Change location" class="top-bar-locate"><i class="fas fa-crosshairs"></i></a>
+    <span id="locationDisplay">Gurgaon, 122001</span>
+    <i class="fas fa-chevron-down" style="font-size:9px;opacity:0.7;"></i>
   </div>
   <div class="top-bar-center">
     <i class="fas fa-phone"></i>
@@ -2711,6 +2843,25 @@ main { padding: 0 16px; }
   </div>
   <div class="top-bar-right">
     <a href="#" aria-label="Login or Signup"><i class="fas fa-user"></i> Login/Signup</a>
+  </div>
+</div>
+
+<!-- Pincode Popup -->
+<div id="pincodeOverlay" class="pincode-overlay" aria-hidden="true"></div>
+<div id="pincodePopup" class="pincode-popup" role="dialog" aria-modal="true" aria-label="Change location">
+  <div class="pincode-popup-header">
+    <span><i class="fas fa-location-dot"></i> Change Location</span>
+    <button class="pincode-close-btn" id="pincodeCloseBtn" aria-label="Close"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="pincode-popup-body">
+    <div class="pincode-input-row">
+      <input type="text" id="pincodeInput" class="pincode-input" maxlength="6" placeholder="Enter pincode" inputmode="numeric" pattern="[0-9]*">
+      <button class="pincode-gps-btn" id="pincodeGpsBtn" title="Detect my location">
+        <i class="fas fa-location-crosshairs"></i>
+      </button>
+    </div>
+    <p class="pincode-hint">Enter 6-digit pincode or use GPS to auto-detect</p>
+    <button class="pincode-apply-btn" id="pincodeApplyBtn">Apply</button>
   </div>
 </div>
 
@@ -2722,10 +2873,13 @@ main { padding: 0 16px; }
       </button>
       <img src="flebo-logo.svg" alt="Flebo home" class="logo-img">
     </div>
-    <button class="upload-report-btn" aria-label="Upload Report of any lab">
-      <img src="vault3.png" alt="Vault" class="vault-icon">
-      Upload Report of any lab
-    </button>
+    <div class="upload-report-wrap">
+      <button class="upload-report-btn" aria-label="Upload Report of any lab">
+        <img src="vault4.png" alt="Vault" class="vault-icon">
+        Upload Report of any lab
+      </button>
+      <div class="upload-report-tags">#FreeAIAnalysis #AllReportsAlwaysAvailable</div>
+    </div>
   </div>
 
 </header>
@@ -3557,7 +3711,7 @@ main { padding: 0 16px; }
   </button>
   <button class="nav-item nav-chat" data-page="chat" aria-label="Chat">
     <img src="doctor2.png" alt="Chat" aria-hidden="true">
-    <span class="nav-label">Chat</span>
+    <span class="nav-label">Flebo.AI</span>
   </button>
   <button class="nav-item" data-page="tests" aria-label="Tests">
     <i class="fas fa-flask-vial" aria-hidden="true"></i>
@@ -3685,8 +3839,8 @@ heroTabs.forEach(tab => {
     }
   });
 });
-heroSubtitle.style.transition = 'opacity 0.15s';
-heroTitle.style.transition = 'opacity 0.15s';
+if (heroSubtitle) heroSubtitle.style.transition = 'opacity 0.15s';
+if (heroTitle) heroTitle.style.transition = 'opacity 0.15s';
 
 // Speciality item click & submit
 document.querySelectorAll('.speciality-item').forEach(item => {
@@ -3706,14 +3860,16 @@ document.getElementById('specialitySubmit').addEventListener('click', () => {
 });
 
 // Tests tab: Locate button
-document.getElementById('testsLocateBtn').addEventListener('click', () => {
-  document.getElementById('testsLocation').value = 'Gurgaon, Haryana';
+document.getElementById('testsLocateBtn')?.addEventListener('click', () => {
+  const loc = document.getElementById('testsLocation');
+  if (loc) loc.value = 'Gurgaon, Haryana';
   showToast('<i class="fas fa-location-dot"></i> Location detected: Gurgaon');
 });
 
 // Packages panel: Locate & box clicks
-document.getElementById('locateBtn').addEventListener('click', () => {
-  document.getElementById('pkgLocation').value = 'Gurgaon, Haryana';
+document.getElementById('locateBtn')?.addEventListener('click', () => {
+  const loc = document.getElementById('pkgLocation');
+  if (loc) loc.value = 'Gurgaon, Haryana';
   showToast('<i class="fas fa-location-dot"></i> Location detected: Gurgaon');
 });
 document.querySelectorAll('.pkg-box').forEach(box => {
@@ -4163,6 +4319,82 @@ document.querySelectorAll('.pkg-cat-tab').forEach(tab => {
   }
 
   setInterval(() => showCard(current + 1), 3000);
+})();
+
+// ===== PINCODE POPUP =====
+(function () {
+  const trigger   = document.getElementById('locationTrigger');
+  const popup     = document.getElementById('pincodePopup');
+  const overlay   = document.getElementById('pincodeOverlay');
+  const closeBtn  = document.getElementById('pincodeCloseBtn');
+  const gpsBtn    = document.getElementById('pincodeGpsBtn');
+  const applyBtn  = document.getElementById('pincodeApplyBtn');
+  const input     = document.getElementById('pincodeInput');
+  const display   = document.getElementById('locationDisplay');
+
+  function openPopup() {
+    popup.classList.add('open');
+    overlay.classList.add('open');
+    popup.setAttribute('aria-hidden', 'false');
+    input.focus();
+  }
+  function closePopup() {
+    popup.classList.remove('open');
+    overlay.classList.remove('open');
+    popup.setAttribute('aria-hidden', 'true');
+  }
+
+  trigger.addEventListener('click', openPopup);
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', closePopup);
+
+  gpsBtn.addEventListener('click', () => {
+    if (!navigator.geolocation) {
+      showToast('<i class="fas fa-exclamation-circle"></i> Geolocation not supported');
+      return;
+    }
+    gpsBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        gpsBtn.innerHTML = '<i class="fas fa-location-crosshairs"></i>';
+        input.value = '122001';
+        display.textContent = 'Gurgaon, 122001';
+        showToast('<i class="fas fa-location-dot"></i> Location detected: Gurgaon, 122001');
+      },
+      () => {
+        gpsBtn.innerHTML = '<i class="fas fa-location-crosshairs"></i>';
+        showToast('<i class="fas fa-exclamation-circle"></i> Unable to detect location');
+      }
+    );
+  });
+
+  const pincodeMap = {
+    '122001': 'Gurgaon', '122002': 'Gurgaon', '122003': 'Gurgaon',
+    '110001': 'Delhi', '110002': 'Delhi', '110003': 'Delhi',
+    '400001': 'Mumbai', '400002': 'Mumbai', '400003': 'Mumbai',
+    '560001': 'Bangalore', '560002': 'Bangalore',
+    '500001': 'Hyderabad', '500002': 'Hyderabad',
+    '600001': 'Chennai', '600002': 'Chennai',
+    '411001': 'Pune', '411002': 'Pune',
+    '700001': 'Kolkata', '700002': 'Kolkata',
+    '201301': 'Noida', '201302': 'Noida',
+    '302001': 'Jaipur', '302002': 'Jaipur'
+  };
+
+  applyBtn.addEventListener('click', () => {
+    const pincode = input.value.trim();
+    if (!/^\d{6}$/.test(pincode)) {
+      showToast('<i class="fas fa-exclamation-circle"></i> Enter a valid 6-digit pincode');
+      return;
+    }
+    const city = pincodeMap[pincode] || 'India';
+    display.textContent = city + ', ' + pincode;
+    showToast('<i class="fas fa-location-dot"></i> Location updated to ' + city + ', ' + pincode);
+    closePopup();
+  });
+
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') applyBtn.click(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
 })();
 
 </script>
