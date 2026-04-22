@@ -175,7 +175,7 @@ input, select { font-family: inherit; }
   font-weight: 700;
   letter-spacing: 0.01em;
 }
-.pincode-popup-header i { margin-right: 6px; font-size: 15px; }
+.pincode-popup-header i { margin-right: 0; font-size: 15px; }
 .pincode-close-btn {
   background: rgba(255,255,255,0.15);
   border: none;
@@ -308,11 +308,11 @@ input, select { font-family: inherit; }
   transition: all 0.25s;
 }
 .upload-report-tags {
-  font-size: 9px;
-  font-weight: 600;
-  color: #2c4c7d;
-  letter-spacing: 0.01em;
-  opacity: 0.85;
+  font-size: 11px;
+  font-weight: 800;
+  color: #122b5b;
+  letter-spacing: 0;
+  opacity: 1;
   text-align: center;
 }
 .upload-report-btn .vault-icon {
@@ -2820,6 +2820,27 @@ main { padding: 0 16px; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+@media (max-width: 370px) {
+  .upload-report-tags {
+    font-size: 9.5px;
+  }
+  .upload-report-btn {
+    font-size: 10px;
+  }
+  .top-bar-left, .top-bar-center, .top-bar-right {
+    gap: 4px;
+    font-size: 11px;
+  }
+  .hero-text .hero-title {
+    font-size: 23px;
+  }
+  .prescription-link {
+    font-size: 12px;
+  }
+  .hero-section {
+    padding: 0 15px 15px;
   }
 }
 </style>
