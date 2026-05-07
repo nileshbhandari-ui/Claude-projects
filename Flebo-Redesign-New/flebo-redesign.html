@@ -276,9 +276,15 @@ input, select { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 5px;
 }
 .logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+}
+.logo-row {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -286,6 +292,38 @@ input, select { font-family: inherit; }
 .logo-img {
   height: 40px;
   width: auto;
+}
+.header-rating {
+  padding: 2px 4px;
+  margin-top: 3px;
+  border: 1px solid #daebf5;
+  border-radius: 3px;
+}
+.header-rating-score {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.header-rating-score .rating-number {
+  font-size: 12px;
+  font-weight: 800;
+  color: #122b5b;
+  line-height: 1;
+}
+.header-rating-score .rating-stars {
+  display: flex;
+  gap: 1px;
+}
+.header-rating-score .rating-stars i {
+  font-size: 10px;
+  color: #f5a623;
+}
+.header-rating-count {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #6b7a99;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 .upload-report-wrap {
   display: flex;
@@ -306,6 +344,7 @@ input, select { font-family: inherit; }
   border: 1.5px solid var(--accent);
   cursor: pointer;
   transition: all 0.25s;
+  white-space: nowrap;
 }
 .upload-report-tags {
   font-size: 11px;
@@ -314,6 +353,7 @@ input, select { font-family: inherit; }
   letter-spacing: 0;
   opacity: 1;
   text-align: center;
+  margin-top: 3px;
 }
 .upload-report-btn .vault-icon {
   width: 20px;
@@ -2890,10 +2930,25 @@ main { padding: 0 16px; }
 <header class="header" role="banner">
   <div class="header-top">
     <div class="logo-area">
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <i class="fas fa-bars"></i>
-      </button>
-      <img src="flebo-logo.svg" alt="Flebo home" class="logo-img">
+      <div class="logo-row">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+        <img src="flebo-logo.svg" alt="Flebo home" class="logo-img">
+      </div>
+      <div class="header-rating">
+        <div class="header-rating-score">
+          <span class="rating-number">4.9</span>
+          <div class="rating-stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <span class="header-rating-count">33,434</span>
+        </div>
+      </div>
     </div>
     <div class="upload-report-wrap">
       <button class="upload-report-btn" aria-label="Upload Report of any lab">
@@ -2957,7 +3012,7 @@ main { padding: 0 16px; }
   <!-- Default hero content (Tests/Packages/Labs) -->
   <div class="hero-default" id="heroDefault">
     <div class="hero-text">
-      <div class="hero-title" id="heroTitle">Book tests after comparing price and ratings of various labs</div>
+      <div class="hero-title" id="heroTitle">Book tests after comparing prices and ratings of various labs</div>
     </div>
     <div class="hero-benefits">
       <div class="hero-benefit-pill">
